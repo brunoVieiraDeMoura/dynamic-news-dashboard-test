@@ -10,28 +10,28 @@ let theme = createTheme({
           color: 'blue', // Cor do texto padrão
         },
         input: {
-          color: '#fff',
+          color: '#333',
           '&::placeholder': {
-            color: '#fff', // Cor do placeholder
+            color: '#333', // Cor do placeholder
             opacity: 1, // Garante que a opacidade seja 100%
           },
         },
       },
     },
-    MuiFormLabel: {
-      styleOverrides: {
-        root: {
-          color: '#fff',
-        },
-      },
-    },
-    MuiOutlinedInput: {
-      styleOverrides: {
-        notchedOutline: {
-          borderColor: '#fff', // Cor do contorno padrão
-        },
-      },
-    },
+    // MuiFormLabel: {
+    //   styleOverrides: {
+    //     root: {
+    //       color: '#fff',
+    //     },
+    //   },
+    // },
+    // MuiOutlinedInput: {
+    //   styleOverrides: {
+    //     notchedOutline: {
+    //       borderColor: '#fff', // Cor do contorno padrão
+    //     },
+    //   },
+    // },
   },
   spacing: 8,
 

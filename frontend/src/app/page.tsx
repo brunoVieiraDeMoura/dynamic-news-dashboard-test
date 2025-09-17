@@ -1,4 +1,5 @@
-import { Box, Typography } from '@mui/material';
+import LoginForm from '@/components/login/login.form';
+import { Box } from '@mui/material';
 
 export default function Home() {
   return (
@@ -9,11 +10,11 @@ export default function Home() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        gap: 2,
+        flexDirection: 'column',
       }}
     >
-      <Typography textAlign="center" variant="h1" color="primary">
-        TESTE
-      </Typography>
+      <LoginForm />
     </Box>
   );
 }
