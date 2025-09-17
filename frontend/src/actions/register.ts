@@ -1,0 +1,27 @@
+'use server';
+
+export interface LoginData {
+  name: string;
+  email: string;
+  password: string;
+}
+
+export default async function RegisterForm(formData: FormData) {
+  const name = formData.get('name') as string | null;
+  const email = formData.get('email') as string | null;
+  const password = formData.get('password') as string | null;
+
+  try {
+    if (name && password && email) {
+      return { message: 'Usuário Logado', fieldData: name };
+    } else {
+      throw new Error('Senha ou usuário não preenchido.');
+    }
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      return { error: 'Senha ou usuário não preenchido.' };
+    } else {
+      return null;
+    }
+  }
+}

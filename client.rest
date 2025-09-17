@@ -1,0 +1,70 @@
+@baseUrl = http://localhost:5056
+
+
+### PEGA TODOS OS USUÁRIOS
+GET {{baseUrl}}/users
+
+### PEGA UM USUÁRIO
+GET {{baseUrl}}/user/4
+
+### CRIA UM USUÁRIO
+POST {{baseUrl}}/user
+Content-Type: application/json
+
+{
+    "name": "teste",
+    "email": "teste@gmail.com",
+    "password": "123123",
+    "role": "user"
+}
+
+
+### ALTERA UM USUÁRIO
+PUT {{baseUrl}}/user
+Content-Type: application/json
+
+{
+    "id":"2",
+    "name": "alterando",
+    "email": "alterando@gmail.com",
+    "password": "333333",
+    "role": "user"
+}
+
+
+### ALTERA UM USUÁRIO
+DELETE {{baseUrl}}/user/2
+
+
+
+### PEGA TODOS OS POSTS
+GET {{baseUrl}}/posts
+
+### PEGA UM POST
+GET {{baseUrl}}/post/4
+
+### CRIA UM POST
+POST {{baseUrl}}/post
+Content-Type: application/json
+
+{
+    "UserId": 1,
+    "Title": "Novo Post",
+    "Text": "Conteúdo do post"
+}
+
+
+### ALTERA UM POST
+PUT {{baseUrl}}/post
+Content-Type: application/json
+
+{
+    "Id": 1,
+    "Title": "Post Atualizado",
+    "Text": "Texto atualizado"
+}
+
+
+### ALTERA UM POST
+DELETE {{baseUrl}}/post/2
+

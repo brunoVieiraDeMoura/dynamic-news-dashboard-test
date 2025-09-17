@@ -13,8 +13,6 @@ export default function Home() {
         gap: 2,
         flexDirection: 'column',
       }}
-    >
-      <LoginForm />
-    </Box>
+    ></Box>
   );
 }
