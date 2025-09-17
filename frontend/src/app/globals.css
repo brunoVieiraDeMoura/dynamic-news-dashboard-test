@@ -1,0 +1,86 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100dvh;
+  margin: 0px;
+  color: #fff;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0px;
+}
+
+ul,
+li {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+button,
+input {
+  display: block;
+  font-size: 1rem;
+  font-family: var(--type-first);
+  color: #fff;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+.container {
+  max-width: 60rem;
+  width: 100%;
+  background: red;
+  padding: 0 1rem;
+  margin: 0 auto;
+}
+/* //ANIMATION */
+
+.animeLeft {
+  opacity: 0;
+  transform: translateX(-40px);
+  animation: animeLeft 0.6s forwards;
+}
+.animeLeftMedium {
+  opacity: 0;
+  transform: translateX(-40px);
+  animation: animeLeft 0.8s forwards;
+}
+.animeLeftLow {
+  opacity: 0;
+  transform: translateX(-40px);
+  animation: animeLeft 1s forwards;
+}
+
+@keyframes animeLeft {
+  to {
+    opacity: 1;
+    transform: initial;
+  }
+}
+
+.animeRight {
+  opacity: 0;
+  transform: translateX(40px);
+  animation: animeLeft 0.6s forwards;
+}
+@keyframes animeRight {
+  to {
+    opacity: 1;
+    transform: initial;
+  }
+}
