@@ -10,11 +10,10 @@ public class UserEndpointRequest
     public void AddRoute(IEndpointRouteBuilder app)
     {
         app.MapGet("/users", GetUsers);
-        app.MapGet("user/{id}", GetUser);
-        app.MapPost("user", CreateUser);
-        app.MapPut("user", EditUser);
-        app.MapDelete("user/{id}", DeleteUser);
-
+        app.MapGet("/users/{id}", GetUser);
+        app.MapPost("/users", CreateUser);
+        app.MapPut("/users/{id}", EditUser);
+        app.MapDelete("/users/{id}", DeleteUser);
     }
 
     private async Task<IResult> GetUsers([FromServices] AppDbContext db)
@@ -30,7 +29,6 @@ public class UserEndpointRequest
             .ToListAsync();
 
         return Results.Ok(user);
-
     }
 
     private async Task<IResult> GetUser([FromServices] AppDbContext db, int id)
@@ -41,31 +39,46 @@ public class UserEndpointRequest
             {
                 Id = u.Id,
                 Name = u.Name,
-                Email = u.Email
+                Email = u.Email,
+                Password = u.Password,
+                Role = u.Role
             })
             .FirstOrDefaultAsync();
 
-        if (user == null)
-            return Results.NotFound("User not found");
+        if (user == null) return Results.NotFound("User not found");
 
-        return Results.Ok(user);
+        var userDto = new UserDto
+        {
+            Id = user.Id,
+            Name = user.Name,
+            Email = user.Email,
+            Password = user.Password,
+            Role = user.Role
+            
+        };
+
+        userDto.Posts = await db.Posts
+            .Where(p => p.UserId == user.Id)
+            .ToListAsync();
+
+        return Results.Ok(userDto);
     }
 
     private async Task<IResult> CreateUser([FromServices] AppDbContext db, [FromBody] User user)
     {
         if (user == null)
             return Results.BadRequest("Invalid user");
+        if (user.Name == null)
+            return Results.BadRequest("Invalid user name");
+        if (user.Email == null)
+            return Results.BadRequest("Invalid user email");
+        if (user.Password == null)
+            return Results.BadRequest("invalid user Password");
+
 
         db.Users.Add(user);
 
-        try
-        {
-            await db.SaveChangesAsync();
-        }
-        catch (Exception ex)
-        {
-            return Results.BadRequest(ex);
-        }
+        await db.SaveChangesAsync();
 
         var userDto = new UserDto
         {
@@ -82,16 +95,21 @@ public class UserEndpointRequest
 
     }
 
-    private async Task<IResult> EditUser([FromServices] AppDbContext db, [FromBody] User userUpdate)
+    private async Task<IResult> EditUser([FromServices] AppDbContext db, [FromBody] User userUpdate, int id)
     {
-        var user = await db.Users.FindAsync(userUpdate.Id);
+        var user = await db.Users.FindAsync(id);
 
         if (user == null)
             return Results.BadRequest("Invalid user");
 
-        user.Name = userUpdate.Name;
-        user.Email = userUpdate.Email;
-        user.Password = userUpdate.Password;
+        if (userUpdate.Name == null && userUpdate.Email == null && userUpdate.Password == null && userUpdate.Role == null)
+            return Results.BadRequest("All values is null");
+
+        if (userUpdate.Name != null) user.Name = userUpdate.Name;
+        if (userUpdate.Email != null) user.Email = userUpdate.Email;
+        if (userUpdate.Password != null) user.Password = userUpdate.Password;
+        if (userUpdate.Role != null) user.Role = userUpdate.Role;
+
         await db.SaveChangesAsync();
 
         return Results.Ok(user);

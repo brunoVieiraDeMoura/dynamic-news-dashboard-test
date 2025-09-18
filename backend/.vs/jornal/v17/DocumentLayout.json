@@ -1,25 +1,25 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\projets\\Jornal\\jornal\\backend\\",
+  "WorkspaceRootPath": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|d:\\projets\\jornal\\jornal\\backend\\controllers\\postendpointrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|d:\\projets\\jornal\\dynamic-news-dashboard-test\\backend\\controllers\\postendpointrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|solutionrelative:controllers\\postendpointrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|d:\\projets\\jornal\\jornal\\backend\\controllers\\userendpointrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|d:\\projets\\jornal\\dynamic-news-dashboard-test\\backend\\controllers\\userendpointrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|solutionrelative:controllers\\userendpointrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|d:\\projets\\jornal\\jornal\\backend\\models\\post.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|d:\\projets\\jornal\\dynamic-news-dashboard-test\\backend\\models\\post.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|solutionrelative:models\\post.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|d:\\projets\\jornal\\jornal\\backend\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|d:\\projets\\jornal\\dynamic-news-dashboard-test\\backend\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|d:\\projets\\jornal\\jornal\\backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|d:\\projets\\jornal\\dynamic-news-dashboard-test\\backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -33,16 +33,12 @@
           "SelectedChildIndex": 4,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Post.cs",
-              "DocumentMoniker": "D:\\projets\\Jornal\\jornal\\backend\\Models\\Post.cs",
+              "DocumentMoniker": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Models\\Post.cs",
               "RelativeDocumentMoniker": "Models\\Post.cs",
-              "ToolTip": "D:\\projets\\Jornal\\jornal\\backend\\Models\\Post.cs",
+              "ToolTip": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Models\\Post.cs",
               "RelativeToolTip": "Models\\Post.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -50,12 +46,16 @@
               "IsPinned": true
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "Program.cs",
-              "DocumentMoniker": "D:\\projets\\Jornal\\jornal\\backend\\Program.cs",
+              "DocumentMoniker": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "D:\\projets\\Jornal\\jornal\\backend\\Program.cs",
+              "ToolTip": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Program.cs",
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -65,9 +65,9 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "UserEndpointRequest.cs",
-              "DocumentMoniker": "D:\\projets\\Jornal\\jornal\\backend\\Controllers\\UserEndpointRequest.cs",
+              "DocumentMoniker": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Controllers\\UserEndpointRequest.cs",
               "RelativeDocumentMoniker": "Controllers\\UserEndpointRequest.cs",
-              "ToolTip": "D:\\projets\\Jornal\\jornal\\backend\\Controllers\\UserEndpointRequest.cs",
+              "ToolTip": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Controllers\\UserEndpointRequest.cs",
               "RelativeToolTip": "Controllers\\UserEndpointRequest.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAGUAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -77,11 +77,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "PostEndpointRequest.cs",
-              "DocumentMoniker": "D:\\projets\\Jornal\\jornal\\backend\\Controllers\\PostEndpointRequest.cs",
+              "DocumentMoniker": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Controllers\\PostEndpointRequest.cs",
               "RelativeDocumentMoniker": "Controllers\\PostEndpointRequest.cs",
-              "ToolTip": "D:\\projets\\Jornal\\jornal\\backend\\Controllers\\PostEndpointRequest.cs",
+              "ToolTip": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Controllers\\PostEndpointRequest.cs",
               "RelativeToolTip": "Controllers\\PostEndpointRequest.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAuwCkAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-17T12:59:12.744Z",
               "EditorCaption": ""
@@ -90,9 +90,9 @@
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "User.cs",
-              "DocumentMoniker": "D:\\projets\\Jornal\\jornal\\backend\\Models\\User.cs",
+              "DocumentMoniker": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Models\\User.cs",
               "RelativeDocumentMoniker": "Models\\User.cs",
-              "ToolTip": "D:\\projets\\Jornal\\jornal\\backend\\Models\\User.cs",
+              "ToolTip": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Models\\User.cs",
               "RelativeToolTip": "Models\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

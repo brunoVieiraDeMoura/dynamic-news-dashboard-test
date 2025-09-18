@@ -10,11 +10,10 @@ namespace jornal.Controllers
         public void AddRoute(IEndpointRouteBuilder app)
         {
             app.MapGet("/posts", GetPosts);
-            app.MapGet("post/{id}", GetPost);
-            app.MapPost("post", CreatePost);
-            app.MapPut("post", EditPost);
-            app.MapDelete("post/{id}", DeletePost);
-
+            app.MapGet("/posts/{id}", GetPost);
+            app.MapPost("/posts", CreatePost);
+            app.MapPut("/posts/{id}", EditPost);
+            app.MapDelete("/posts/{id}", DeletePost);
         }
 
         private async Task<IResult> GetPosts([FromServices] AppDbContext db)
@@ -60,11 +59,17 @@ namespace jornal.Controllers
             if (post == null)
                 return Results.BadRequest("Invalid post");
 
+            if (post.Text == null)
+                return Results.BadRequest("Invalid post text");
+            if (post.Title == null)
+                return Results.BadRequest("Invalid post title");
+
             var user = await db.Users.FindAsync(post.UserId);
             if (user == null)
-                return Results.BadRequest("User for post not found");
+                return Results.BadRequest("UserId not found");
 
             db.Posts.Add(post);
+
             await db.SaveChangesAsync();
 
             var postDto = new PostDto
@@ -80,15 +85,20 @@ namespace jornal.Controllers
 
         }
 
-        private async Task<IResult> EditPost([FromServices] AppDbContext db, [FromBody] Post postUpdate)
+        private async Task<IResult> EditPost([FromServices] AppDbContext db, [FromBody] Post postUpdate, int id)
         {
-            var post = await db.Posts.FindAsync(postUpdate.Id);
+            var post = await db.Posts.FindAsync(id);
             if (post == null)
                 return Results.BadRequest("Post not found");
 
-            post.Title = postUpdate.Title;
-            post.Text = postUpdate.Text;
+            if (postUpdate.Title != null) post.Title = postUpdate.Title;
+            if (postUpdate.Text != null) post.Text = postUpdate.Text;
+
             await db.SaveChangesAsync();
+
+            var user = await db.Users.FindAsync(post.UserId);
+
+            if (user == null) user.Name = "null";
 
             var postDto = new PostDto
             {
@@ -96,7 +106,7 @@ namespace jornal.Controllers
                 UserId = post.UserId,
                 Title = post.Title,
                 Text = post.Text,
-                UserName = (await db.Users.FindAsync(post.UserId))?.Name
+                UserName = user.Name
             };
 
             return Results.Ok(postDto);
