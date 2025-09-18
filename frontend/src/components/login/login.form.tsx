@@ -27,7 +27,7 @@ export default function LoginForm() {
         <form action={action}>
           <TextField
             label="Username"
-            name="username"
+            name="name"
             type="text"
             variant="outlined"
             fullWidth
@@ -53,28 +53,10 @@ export default function LoginForm() {
           >
             {isPending ? 'Entrando...' : 'Entrar'}
           </Button>
-        </form>
-        <Typography
-          variant="h5"
-          mb={2}
-          textAlign="center"
-          color="primary"
-        ></Typography>
-        {data?.message ? (
-          <Typography variant="h5" mb={2} textAlign="center" color="primary">
-            {data.message}
-          </Typography>
-        ) : null}
-
-        {data?.error ? (
-          <Typography variant="h5" mb={2} textAlign="center" color="primary">
-            {data.error}
-          </Typography>
-        ) : null}
-
-        {data?.fieldData ? (
-          <Typography variant="h5" mb={2} textAlign="center" color="primary">
-            {data.fieldData}
+        </form>{' '}
+        {data?.data ? (
+          <Typography variant="body1" color="primary">
+            Usuário {data.data.name} Logado
           </Typography>
         ) : null}
       </Paper>

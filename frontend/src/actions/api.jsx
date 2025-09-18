@@ -1,4 +1,4 @@
-export const API_URL = '';
+export const API_URL = 'http://localhost:5056';
 
 export function TOKEN_POST(body) {
   return {
@@ -22,5 +22,17 @@ export function TOKEN_VALIDATE_POST(token) {
         Authorization: 'Bearer ' + token,
       },
     },
+  };
+}
+
+export function USER_GET(token) {
+  return {
+    url: API_URL + '/user',
+  };
+}
+
+export function USER_POST() {
+  return {
+    url: API_URL + '/user',
   };
 }

@@ -5,7 +5,7 @@
 GET {{baseUrl}}/users
 
 ### PEGA UM USUÁRIO
-GET {{baseUrl}}/user/4
+GET {{baseUrl}}/user/7
 
 ### CRIA UM USUÁRIO
 POST {{baseUrl}}/user

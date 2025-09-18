@@ -1,12 +1,17 @@
 'use client';
 
+import { UserResponse } from '@/actions/login';
 import RegisterForm from '@/actions/register';
 import { Box, Button, Paper, TextField, Typography } from '@mui/material';
-import { useActionState } from 'react';
+import React, { useActionState } from 'react';
 
-export default function RegisterFormComponent() {
+export default function RegisterFormComponent({
+  usuarios,
+}: {
+  usuarios: UserResponse[];
+}) {
   const [data, action, isPending] = useActionState(RegisterForm, undefined);
-
+  const [allUsers, setAllUsers] = React.useState<UserResponse[]>(usuarios);
   return (
     <Box
       display="flex"
@@ -47,6 +52,14 @@ export default function RegisterFormComponent() {
             fullWidth
             margin="normal"
           />
+          <TextField
+            label="Role"
+            name="role"
+            type="text"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+          />
           <Button
             disabled={isPending}
             type="submit"
@@ -58,8 +71,6 @@ export default function RegisterFormComponent() {
             {isPending ? 'Entrando...' : 'Entrar'}
           </Button>
         </form>
-
-        {data ? data.fieldData : null}
       </Paper>
     </Box>
   );
