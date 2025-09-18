@@ -1,17 +1,12 @@
 'use client';
 
-import { UserResponse } from '@/actions/login';
 import RegisterForm from '@/actions/register';
 import { Box, Button, Paper, TextField, Typography } from '@mui/material';
 import React, { useActionState } from 'react';
 
-export default function RegisterFormComponent({
-  usuarios,
-}: {
-  usuarios: UserResponse[];
-}) {
+export default function RegisterFormComponent() {
   const [data, action, isPending] = useActionState(RegisterForm, undefined);
-  const [allUsers, setAllUsers] = React.useState<UserResponse[]>(usuarios);
+
   return (
     <Box
       display="flex"

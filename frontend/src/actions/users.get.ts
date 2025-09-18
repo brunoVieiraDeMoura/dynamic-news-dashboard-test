@@ -17,12 +17,11 @@ export default async function getUsers() {
       method: 'GET',
     });
     if (!response.ok) throw new Error('ao pegar os usuários');
-    const data = (await response.json()) as LoginResponse;
-    console.log('passou');
-    return { data: data };
+    const data = (await response.json()) as LoginResponse[];
+    return data;
   } catch (error: unknown) {
     if (error instanceof Error) {
-      return { error: 'Senha ou usuário não preenchido.' };
+      return error.message;
     } else {
       return null;
     }
