@@ -751,3 +751,4 @@ D:\projets\Jornal\dynamic-news-dashboard-test\backend\obj\Debug\net9.0\refint\jo
 D:\projets\Jornal\dynamic-news-dashboard-test\backend\obj\Debug\net9.0\jornal.pdb
 D:\projets\Jornal\dynamic-news-dashboard-test\backend\obj\Debug\net9.0\jornal.genruntimeconfig.cache
 D:\projets\Jornal\dynamic-news-dashboard-test\backend\obj\Debug\net9.0\ref\jornal.dll
+D:\projets\Jornal\dynamic-news-dashboard-test\backend\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
