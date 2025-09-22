@@ -10,7 +10,7 @@ public class User
     public  string Password { get; set; }
     public string Role { get; set; } = "user";
     public ICollection<Post> Posts { get; set; } = new List<Post>();
-
+    public DateTime Date { get; set; } = DateTime.Now;
 }
 public class UserDto
 {
@@ -20,7 +20,7 @@ public class UserDto
     public string Password { get; set; }
     public string Role { get; set; } = "user";
     public ICollection<Post> Posts { get; set; }
-
+    public DateTime Date { get; set; }
 }
 
 public enum Role

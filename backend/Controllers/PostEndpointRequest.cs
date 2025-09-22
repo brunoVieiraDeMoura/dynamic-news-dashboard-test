@@ -23,6 +23,7 @@ namespace jornal.Controllers
                 .Select(p => new PostDto
                 {
                     Id = p.Id,
+                    Date = p.Date,
                     UserId = p.UserId,
                     Title = p.Title,
                     Text = p.Text,
@@ -41,6 +42,7 @@ namespace jornal.Controllers
                 .Select(p => new PostDto
                 {
                     Id = p.Id,
+                    Date = p.Date,
                     UserId = p.UserId,
                     Title = p.Title,
                     Text = p.Text,
@@ -75,6 +77,7 @@ namespace jornal.Controllers
             var postDto = new PostDto
             {
                 Id = post.Id,
+                Date = post.Date,
                 UserId = post.UserId,
                 Title = post.Title,
                 Text = post.Text,
@@ -98,11 +101,12 @@ namespace jornal.Controllers
 
             var user = await db.Users.FindAsync(post.UserId);
 
-            if (user == null) user.Name = "null";
+            if (user == null ) user.Name = "null";
 
             var postDto = new PostDto
             {
                 Id = post.Id,
+                Date = post.Date,
                 UserId = post.UserId,
                 Title = post.Title,
                 Text = post.Text,

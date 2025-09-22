@@ -28,6 +28,7 @@ public class UserEndpointRequest
             .Select(u => new UserDto
             {
                 Id = u.Id,
+                Date = u.Date,
                 Name = u.Name,
                 Email = u.Email,
                 Password = u.Password,
@@ -37,7 +38,6 @@ public class UserEndpointRequest
 
         return Results.Ok(user);
     }
-
     private async Task<IResult> GetUser([FromServices] AppDbContext db, int id)
     {
         var user = await db.Users
@@ -45,6 +45,7 @@ public class UserEndpointRequest
             .Select(u => new UserDto
             {
                 Id = u.Id,
+                Date = u.Date,
                 Name = u.Name,
                 Email = u.Email,
                 Password = u.Password,
@@ -54,28 +55,16 @@ public class UserEndpointRequest
 
         if (user == null) return Results.NotFound("User not found");
 
-        var userDto = new UserDto
-        {
-            Id = user.Id,
-            Name = user.Name,
-            Email = user.Email,
-            Password = user.Password,
-            Role = user.Role
-        };
-
-        userDto.Posts = await db.Posts
+        user.Posts = await db.Posts
             .Where(p => p.UserId == user.Id)
             .ToListAsync();
 
-        return Results.Ok(userDto);
+        return Results.Ok(user);
     }
-
     private async Task<IResult> CreateUser(
-        [FromServices] AppDbContext db, 
+        [FromServices] AppDbContext db,
         [FromBody] User user)
     {
-
-
         if (user == null)
             return Results.BadRequest("Invalid user");
         if (user.Name == null)
@@ -85,7 +74,9 @@ public class UserEndpointRequest
         if (user.Password == null)
             return Results.BadRequest("invalid user Password");
 
+        user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
 
+        Console.WriteLine(user.Password);
 
         db.Users.Add(user);
 
@@ -94,6 +85,7 @@ public class UserEndpointRequest
         var userDto = new UserDto
         {
             Id = user.Id,
+            Date = user.Date,
             Name = user.Name,
             Email = user.Email,
             Password = user.Password,
@@ -103,16 +95,16 @@ public class UserEndpointRequest
         return Results.Ok(userDto);
     }
     private async Task<IResult> LoginUser(
-        [FromServices]AppDbContext db,
+        [FromServices] AppDbContext db,
         [FromServices] IOptions<JwtSettings> jwtSettings,
         [FromBody] LoginDto login)
     {
-        var user = db.Users.FirstOrDefault(u =>
-            u.Email == login.Email && u.Password == login.Password);
 
-       
-
+        var user = await db.Users.FirstOrDefaultAsync(u => u.Email == login.Email);
         if (user == null) return Results.Unauthorized();
+
+        bool passwordOk = BCrypt.Net.BCrypt.Verify(login.Password, user.Password);
+        if (!passwordOk) return Results.Unauthorized();
 
         var claims = new[]
         {
@@ -138,7 +130,6 @@ public class UserEndpointRequest
                 user.Role
             }
         };
-
 
         return Results.Ok(res);
 
@@ -180,13 +171,14 @@ public class UserEndpointRequest
         await db.SaveChangesAsync();
 
         return Results.Ok(user);
-
-
     }
 
     private async Task<IResult> DeleteUser([FromServices] AppDbContext db, int id)
     {
         var user = await db.Users.FindAsync(id);
+
+        if (user == null)
+            return Results.BadRequest("User not found");
 
         db.Users.Remove(user);
 
