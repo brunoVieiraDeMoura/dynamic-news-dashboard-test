@@ -15,12 +15,12 @@ public class UserEndpointRequest
 
     public void AddRoute(IEndpointRouteBuilder app)
     {
-        app.MapGet("/users", GetUsers).RequireAuthorization();
-        app.MapGet("/users/{id}", GetUser).RequireAuthorization();
+        app.MapGet("/users", GetUsers);
+        app.MapGet("/users/{id}", GetUser);
         app.MapPost("/users", CreateUser);
         app.MapPost("/login", LoginUser);
-        app.MapPut("/users/{id}", EditUser).RequireAuthorization();
-        app.MapDelete("/users/{id}", DeleteUser).RequireAuthorization();
+        app.MapPut("/users/{id}", EditUser);
+        app.MapDelete("/users/{id}", DeleteUser);
     }
     private async Task<IResult> GetUsers([FromServices] AppDbContext db)
     {
@@ -110,6 +110,8 @@ public class UserEndpointRequest
         var user = db.Users.FirstOrDefault(u =>
             u.Email == login.Email && u.Password == login.Password);
 
+       
+
         if (user == null) return Results.Unauthorized();
 
         var claims = new[]
@@ -123,12 +125,22 @@ public class UserEndpointRequest
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
         var token = new JwtSecurityToken(
-            expires: DateTime.UtcNow.AddHours(1),
+            expires: DateTime.UtcNow.AddHours(24),
             claims: claims,
             signingCredentials: creds);
 
+        var res = new
+        {
+            Token = new JwtSecurityTokenHandler().WriteToken(token),
+            User = new
+            {
+                user.Name,
+                user.Role
+            }
+        };
 
-        return Results.Ok(new { token = new JwtSecurityTokenHandler().WriteToken(token) });
+
+        return Results.Ok(res);
 
 
     }
