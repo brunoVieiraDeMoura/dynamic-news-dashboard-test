@@ -1,0 +1,141 @@
+{
+  "type": "doc",
+  "content": [
+    {
+      "type": "heading",
+      "attrs": { "level": 1 },
+      "content": [{ "type": "text", "text": "Escreva algo..." }]
+    },
+    { "type": "paragraph" },
+    {
+      "type": "paragraph",
+      "content": [
+        { "type": "text", "marks": [{ "type": "bold" }], "text": "dsadas" }
+      ]
+    },
+    {
+      "type": "blockquote",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "marks": [{ "type": "bold" }],
+              "text": "aseaseasesaeas"
+            }
+          ]
+        }
+      ]
+    },
+    { "type": "paragraph" },
+    {
+      "type": "paragraph",
+      "content": [
+        { "type": "text", "text": "Ou" },
+        { "type": "text", "marks": [{ "type": "italic" }], "text": "tra coisa" }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        { "type": "text", "text": "a" },
+        {
+          "type": "text",
+          "marks": [{ "type": "underline" }],
+          "text": "sesesese"
+        }
+      ]
+    },
+    { "type": "paragraph" },
+    {
+      "type": "paragraph",
+      "content": [
+        { "type": "text", "marks": [{ "type": "strike" }], "text": "Outra" }
+      ]
+    },
+    { "type": "paragraph" },
+    {
+      "type": "paragraph",
+      "content": [
+        { "type": "text", "marks": [{ "type": "strike" }], "text": "Outra" }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        { "type": "text", "text": "Link " },
+        {
+          "type": "text",
+          "marks": [
+            {
+              "type": "link",
+              "attrs": {
+                "href": "www.google.com",
+                "target": "_blank",
+                "rel": "noopener noreferrer nofollow",
+                "class": null
+              }
+            }
+          ],
+          "text": "Teste"
+        }
+      ]
+    },
+    { "type": "paragraph" },
+    { "type": "paragraph" },
+    {
+      "type": "bulletList",
+      "content": [
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [{ "type": "text", "text": "lista teste" }]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [{ "type": "text", "text": "outra" }]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [{ "type": "text", "text": "outra" }]
+            }
+          ]
+        }
+      ]
+    },
+    { "type": "paragraph" },
+    { "type": "paragraph" },
+    {
+      "type": "youtube",
+      "attrs": {
+        "src": "https://www.youtube.com/watch?v=TrZkvzb6dto",
+        "start": 0,
+        "width": 640,
+        "height": 480
+      }
+    },
+    {
+      "type": "image",
+      "attrs": {
+        "src": "http://localhost:5056/uploads/undefined",
+        "alt": "A boring example image",
+        "title": "An example",
+        "width": null,
+        "height": null
+      }
+    }
+  ]
+}
