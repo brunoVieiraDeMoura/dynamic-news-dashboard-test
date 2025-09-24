@@ -5,57 +5,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace jornal.Controllers
 {
-    public class PostEndpointRequest
+    public class PostEndpoint
     {
         public void AddRoute(IEndpointRouteBuilder app)
         {
-            app.MapGet("/posts", GetPosts);
-            app.MapGet("/posts/{id}", GetPost);
-            app.MapPost("/posts", CreatePost);
-            app.MapPut("/posts/{id}", EditPost);
-            app.MapDelete("/posts/{id}", DeletePost);
+            app.MapPost("/post", CreatePost);
+            app.MapGet("/posts", ReadPosts);
+            app.MapGet("/post/{id}", ReadPost);
+            app.MapPut("/post/{id}", UpdatePost);
+            app.MapDelete("/post/{id}", DeletePost);
         }
-
-        private async Task<IResult> GetPosts([FromServices] AppDbContext db)
-        {
-            var posts = await db.Posts
-                .Include(p => p.User)
-                .Select(p => new PostDto
-                {
-                    Id = p.Id,
-                    Date = p.Date,
-                    UserId = p.UserId,
-                    Title = p.Title,
-                    Text = p.Text,
-                    UserName = p.User.Name
-                })
-                .ToListAsync();
-
-            return Results.Ok(posts);
-        }
-
-        private async Task<IResult> GetPost([FromServices] AppDbContext db, int id)
-        {
-            var post = await db.Posts
-                .Include(p => p.User)
-                .Where(p => p.Id == id)
-                .Select(p => new PostDto
-                {
-                    Id = p.Id,
-                    Date = p.Date,
-                    UserId = p.UserId,
-                    Title = p.Title,
-                    Text = p.Text,
-                    UserName = p.User.Name
-                })
-                .FirstOrDefaultAsync();
-
-            if (post == null)
-                return Results.NotFound("Post not found");
-
-            return Results.Ok(post);
-        }
-
         private async Task<IResult> CreatePost([FromServices] AppDbContext db, [FromBody] Post post)
         {
             if (post == null)
@@ -85,11 +44,53 @@ namespace jornal.Controllers
             };
 
             return Results.Ok(postDto);
-
         }
-
-        private async Task<IResult> EditPost([FromServices] AppDbContext db, [FromBody] Post postUpdate, int id)
+        private async Task<IResult> ReadPosts([FromServices] AppDbContext db)
         {
+            var posts = await db.Posts
+                .Include(p => p.User)
+                .Select(p => new PostDto
+                {
+                    Id = p.Id,
+                    Date = p.Date,
+                    UserId = p.UserId,
+                    Title = p.Title,
+                    Text = p.Text,
+                    UserName = p.User.Name
+                })
+                .ToListAsync();
+
+            if (posts.Count == 0) return Results.BadRequest("Postos count is 0");
+
+            return Results.Ok(posts);
+        }
+        private async Task<IResult> ReadPost([FromServices] AppDbContext db, int id)
+        {
+            var post = await db.Posts
+                .Include(p => p.User)
+                .Where(p => p.Id == id)
+                .Select(p => new PostDto
+                {
+                    Id = p.Id,
+                    Date = p.Date,
+                    UserId = p.UserId,
+                    Title = p.Title,
+                    Text = p.Text,
+                    UserName = p.User.Name
+                })
+                .FirstOrDefaultAsync();
+
+            if (post == null)
+                return Results.NotFound("Post not found");
+
+            return Results.Ok(post);
+        }
+        private async Task<IResult> UpdatePost([FromServices] AppDbContext db, [FromBody] Post postUpdate, int id)
+        {
+            if (postUpdate == null) return Results.BadRequest("Post is null");
+
+            if (postUpdate.Title == null && postUpdate.Text == null) return Results.BadRequest("Post Title and Text is null");
+            
             var post = await db.Posts.FindAsync(id);
             if (post == null)
                 return Results.BadRequest("Post not found");
@@ -101,7 +102,7 @@ namespace jornal.Controllers
 
             var user = await db.Users.FindAsync(post.UserId);
 
-            if (user == null ) user.Name = "null";
+            if (user == null) user.Name = "null";
 
             var postDto = new PostDto
             {
@@ -115,8 +116,7 @@ namespace jornal.Controllers
 
             return Results.Ok(postDto);
         }
-
-        private async Task<IResult> DeletePost([FromServices] AppDbContext db,int id)
+        private async Task<IResult> DeletePost([FromServices] AppDbContext db, int id)
         {
             var post = await db.Posts.FindAsync(id);
             if (post == null)
@@ -126,7 +126,6 @@ namespace jornal.Controllers
             await db.SaveChangesAsync();
 
             return Results.Ok($"Post {post.Id} deleted");
-
         }
     }
 }

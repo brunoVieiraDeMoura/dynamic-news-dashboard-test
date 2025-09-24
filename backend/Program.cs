@@ -78,8 +78,8 @@ app.MapControllers();
 
 
 // Registra endpoints adicionais, definidos manualmente nas classes de Request
-var renderUserEndpoint = new UserEndpointRequest();
-var renderPostEndpoint = new PostEndpointRequest();
+var renderUserEndpoint = new UserEndpoint();
+var renderPostEndpoint = new PostEndpoint();
 renderUserEndpoint.AddRoute(app); // Adiciona rotas personalizadas de usuário
 renderPostEndpoint.AddRoute(app); // Adiciona rotas personalizadas de post
 
