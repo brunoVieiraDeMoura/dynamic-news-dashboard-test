@@ -26,7 +26,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
-
 // Add services to the container.
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite("Data Source=users.db"));
@@ -38,7 +37,6 @@ builder.Services.AddControllers()
         opt.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
     });
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("Jwt"));
-
 
 // Configura o CORS
 builder.Services.AddCors(options =>
@@ -62,7 +60,6 @@ using (var scope = app.Services.CreateScope())
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     db.Database.EnsureCreated(); // Cria o arquivo users.db se não existir
 }
-
 
 // Configure the HTTP request pipeline.
 app.UseHttpsRedirection();

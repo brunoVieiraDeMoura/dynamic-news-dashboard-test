@@ -16,13 +16,13 @@ public class UserEndpoint
     public void AddRoute(IEndpointRouteBuilder app)
     {
         app.MapPost("/user", CreateUser);
-        app.MapGet("/users", ReadUsers);
-        app.MapGet("/user/{id}", ReadUser);
-        app.MapPut("/user/{id}", UpdateUser);
-        app.MapDelete("/user/{id}", DeleteUser);
-        app.MapPost("/login", LoginUser);
+        app.MapGet("/users", ReadUsers).RequireAuthorization();
+        app.MapGet("/user/{id}", ReadUser).RequireAuthorization();
+        app.MapPut("/user/{id}", UpdateUser).RequireAuthorization();
+        app.MapDelete("/user/{id}", DeleteUser).RequireAuthorization();
+        app.MapPost("/login", Login);
+        app.MapPost("/me", Me).RequireAuthorization();
     }
-
     private async Task<IResult> CreateUser(
         [FromServices] AppDbContext db,
         [FromBody] User user)
@@ -151,7 +151,7 @@ public class UserEndpoint
 
         return Results.Ok($"User {user.Id} deleted");
     }
-    private async Task<IResult> LoginUser(
+    private async Task<IResult> Login(
         [FromServices] AppDbContext db,
         [FromServices] IOptions<JwtSettings> jwtSettings,
         [FromBody] LoginDto login)
@@ -189,5 +189,31 @@ public class UserEndpoint
         };
 
         return Results.Ok(res);
+    }
+    private async Task<IResult> Me(
+        [FromServices] AppDbContext db,
+        HttpContext http)
+    {
+        var emailClaim = http.User.FindFirst(ClaimTypes.Name)?.Value;
+
+        if (emailClaim == null)
+            return Results.Unauthorized();
+
+        var user = await db.Users
+            .Where(u => u.Email == emailClaim)
+            .Select(u => new UserDto
+            {
+                Id = u.Id,
+                Date = u.Date,
+                Name = u.Name,
+                Email = u.Email,
+                Role = u.Role
+            })
+            .FirstOrDefaultAsync();
+
+        if (user == null)
+            return Results.NotFound("User not found");
+
+        return Results.Ok(user);
     }
 }
