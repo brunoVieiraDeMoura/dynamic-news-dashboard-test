@@ -80,8 +80,13 @@ app.MapControllers();
 // Registra endpoints adicionais, definidos manualmente nas classes de Request
 var renderUserEndpoint = new UserEndpoint();
 var renderPostEndpoint = new PostEndpoint();
-renderUserEndpoint.AddRoute(app); // Adiciona rotas personalizadas de usuário
-renderPostEndpoint.AddRoute(app); // Adiciona rotas personalizadas de post
+var renderCategoryEndpoint = new CategoryEndpoint();
+var renderSubCategoryEndpoint = new SubCategoryEndpoint();
+renderUserEndpoint.AddRoute(app); // Adiciona rotas personalizadas de User
+renderPostEndpoint.AddRoute(app); // Adiciona rotas personalizadas de Post
+renderCategoryEndpoint.Addroute(app); // Adiciona rotas personalizadas de Category
+renderSubCategoryEndpoint.AddRoute(app); // Adiciona rotas personalizadas de SubCategory
+
 
 // Iicia a aplicação e começa a escutar requisições
 app.Run();

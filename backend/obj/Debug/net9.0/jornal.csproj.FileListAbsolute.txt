@@ -753,4 +753,3 @@ D:\projets\Jornal\dynamic-news-dashboard-test\backend\obj\Debug\net9.0\jornal.ge
 D:\projets\Jornal\dynamic-news-dashboard-test\backend\obj\Debug\net9.0\ref\jornal.dll
 D:\projets\Jornal\dynamic-news-dashboard-test\backend\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\projets\Jornal\dynamic-news-dashboard-test\backend\bin\Debug\net9.0\BCrypt.Net-Next.dll
-D:\projets\Jornal\dynamic-news-dashboard-test\backend\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
