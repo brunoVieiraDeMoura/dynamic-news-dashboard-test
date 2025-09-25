@@ -75,6 +75,10 @@
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[9.0.9, )"
+            },
+            "MiniValidation": {
+              "target": "Package",
+              "version": "[0.9.2, )"
             }
           },
           "imports": [

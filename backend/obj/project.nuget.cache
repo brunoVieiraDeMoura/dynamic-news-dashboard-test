@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "P+zArBHi6+Y=",
+  "dgSpecHash": "vcE8Zk7DyKs=",
   "success": true,
   "projectFilePath": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\jornal.csproj",
   "expectedPackageFiles": [
@@ -49,6 +49,7 @@
     "C:\\Users\\coach\\.nuget\\packages\\microsoft.identitymodel.tokens\\8.0.1\\microsoft.identitymodel.tokens.8.0.1.nupkg.sha512",
     "C:\\Users\\coach\\.nuget\\packages\\microsoft.sqlserver.server\\1.0.0\\microsoft.sqlserver.server.1.0.0.nupkg.sha512",
     "C:\\Users\\coach\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\coach\\.nuget\\packages\\minivalidation\\0.9.2\\minivalidation.0.9.2.nupkg.sha512",
     "C:\\Users\\coach\\.nuget\\packages\\mono.texttemplating\\3.0.0\\mono.texttemplating.3.0.0.nupkg.sha512",
     "C:\\Users\\coach\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.10\\sqlitepclraw.bundle_e_sqlite3.2.1.10.nupkg.sha512",
     "C:\\Users\\coach\\.nuget\\packages\\sqlitepclraw.core\\2.1.10\\sqlitepclraw.core.2.1.10.nupkg.sha512",

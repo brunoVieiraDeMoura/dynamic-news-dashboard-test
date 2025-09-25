@@ -3,60 +3,56 @@ using System.Security.Claims;
 using System.Text;
 using jornal.Models;
 using jornal.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using MiniValidation;
 
 namespace jornal.Controllers;
 
 public class UserEndpoint
 {
-
     public void AddRoute(IEndpointRouteBuilder app)
     {
-        app.MapPost("/user", CreateUser);
-        app.MapGet("/users", ReadUsers).RequireAuthorization();
-        app.MapGet("/user/{id}", ReadUser).RequireAuthorization();
-        app.MapPut("/user/{id}", UpdateUser).RequireAuthorization();
-        app.MapDelete("/user/{id}", DeleteUser).RequireAuthorization();
+        app.MapPost("/user", Create);
+        app.MapGet("/users", Reads)
+            .RequireAuthorization(new AuthorizeAttribute { Roles = "admin"});
+        app.MapGet("/user/{id}", Read).RequireAuthorization();
+        app.MapPut("/user/{id}", Update).RequireAuthorization();
+        app.MapDelete("/user/{id}", Delete).RequireAuthorization();
+        app.MapPost("/user/me", Me).RequireAuthorization();
         app.MapPost("/login", Login);
-        app.MapPost("/me", Me).RequireAuthorization();
     }
-    private async Task<IResult> CreateUser(
+    private async Task<IResult> Create(
         [FromServices] AppDbContext db,
-        [FromBody] User user)
+        [FromBody] UserCreateDto dto)
     {
-        if (user == null)
-            return Results.BadRequest("Invalid user");
-        if (user.Name == null)
-            return Results.BadRequest("Invalid user name");
-        if (user.Email == null)
-            return Results.BadRequest("Invalid user email");
-        if (user.Password == null)
-            return Results.BadRequest("invalid user Password");
+        if (dto == null) return Results.BadRequest("Invalid user");
+        if (dto.Name == null) return Results.BadRequest("Invalid user name");
+        if (dto.Email == null) return Results.BadRequest("Invalid user email");
+        if (dto.Password == null) return Results.BadRequest("invalid user Password");
 
-        user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+        if (!MiniValidator.TryValidate(dto, out var errors))
+            return Results.ValidationProblem(errors);
 
-        db.Users.Add(user);
+        if (!await db.Users.AnyAsync(u => u.Email == dto.Email)) return Results.BadRequest("Email already registered");
 
-        await db.SaveChangesAsync();
-
-        var userDto = new UserDto
+        var user = new User
         {
-            Id = user.Id,
-            Date = user.Date,
-            Name = user.Name,
-            Email = user.Email,
-            Password = user.Password,
-            Role = user.Role
+            Name = dto.Name,
+            Email = dto.Email,
+            Password = BCrypt.Net.BCrypt.HashPassword(dto.Password)
         };
 
-        
+        await db.Users.AddAsync(user);
+        await db.SaveChangesAsync();
 
-        return Results.Ok($"Usuario criado com sucesso!" );
+        return Results.Ok($"Usuario criado com sucesso!");
+
     }
-    private async Task<IResult> ReadUsers([FromServices] AppDbContext db)
+    private async Task<IResult> Reads([FromServices] AppDbContext db)
     {
         var user = await db.Users
             .Select(u => new UserDto
@@ -65,7 +61,6 @@ public class UserEndpoint
                 Date = u.Date,
                 Name = u.Name,
                 Email = u.Email,
-                Password = u.Password,
                 Role = u.Role
             })
             .ToListAsync();
@@ -74,7 +69,7 @@ public class UserEndpoint
 
         return Results.Ok(user);
     }
-    private async Task<IResult> ReadUser([FromServices] AppDbContext db, int id)
+    private async Task<IResult> Read([FromServices] AppDbContext db, int id)
     {
         var user = await db.Users
             .Where(u => u.Id == id)
@@ -84,7 +79,6 @@ public class UserEndpoint
                 Date = u.Date,
                 Name = u.Name,
                 Email = u.Email,
-                Password = u.Password,
                 Role = u.Role
             })
             .FirstOrDefaultAsync();
@@ -98,14 +92,15 @@ public class UserEndpoint
         return Results.Ok(user);
     }
 
-    private async Task<IResult> UpdateUser([FromServices] AppDbContext db, [FromBody] User userUpdate, int id)
+    private async Task<IResult> Update([FromServices] AppDbContext db, [FromBody] User userUpdate, int id)
     {
         if (userUpdate == null) return Results.BadRequest("User is null");
 
+        if (!await db.Users.AnyAsync(u => u.Email == userUpdate.Email)) return Results.BadRequest("Email already registered");
+
         var user = await db.Users.FindAsync(id);
 
-        if (user == null)
-            return Results.BadRequest("Invalid user");
+        if (user == null) return Results.BadRequest("Invalid user");
 
         if (userUpdate.Name == null &&
             userUpdate.Email == null &&
@@ -138,7 +133,7 @@ public class UserEndpoint
         return Results.Ok(user);
     }
 
-    private async Task<IResult> DeleteUser([FromServices] AppDbContext db, int id)
+    private async Task<IResult> Delete([FromServices] AppDbContext db, int id)
     {
         var user = await db.Users.FindAsync(id);
 
@@ -178,17 +173,7 @@ public class UserEndpoint
             claims: claims,
             signingCredentials: creds);
 
-        var res = new
-        {
-            Token = new JwtSecurityTokenHandler().WriteToken(token),
-            User = new
-            {
-                user.Name,
-                user.Role
-            }
-        };
-
-        return Results.Ok(res);
+        return Results.Ok(token);
     }
     private async Task<IResult> Me(
         [FromServices] AppDbContext db,
