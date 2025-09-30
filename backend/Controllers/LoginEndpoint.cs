@@ -44,6 +44,11 @@ public class LoginEndpoint
             claims: claims,
             signingCredentials: creds);
 
-        return Results.Ok(token);
+        var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
+
+        return Results.Ok(new
+        {
+            Token = tokenString
+        });
     }
 }
