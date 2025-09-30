@@ -79,10 +79,12 @@ var renderUserEndpoint = new UserEndpoint();
 var renderPostEndpoint = new PostEndpoint();
 var renderCategoryEndpoint = new CategoryEndpoint();
 var renderSubCategoryEndpoint = new SubCategoryEndpoint();
+var renderLoginEndpoint = new LoginEndpoint();
 renderUserEndpoint.AddRoute(app); // Adiciona rotas personalizadas de User
 renderPostEndpoint.AddRoute(app); // Adiciona rotas personalizadas de Post
-renderCategoryEndpoint.Addroute(app); // Adiciona rotas personalizadas de Category
+renderCategoryEndpoint.AddRoute(app); // Adiciona rotas personalizadas de Category
 renderSubCategoryEndpoint.AddRoute(app); // Adiciona rotas personalizadas de SubCategory
+renderLoginEndpoint.AddRoute(app);
 
 
 // Iicia a aplicação e começa a escutar requisições

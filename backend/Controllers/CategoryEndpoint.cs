@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace jornal.Controllers;
 public class CategoryEndpoint
 {
-    public void Addroute(IEndpointRouteBuilder app)
+    public void AddRoute(IEndpointRouteBuilder app)
     {
         app.MapPost("/category", CreateCategory);
         app.MapGet("/categorys", ReadCategorys);
@@ -21,7 +21,7 @@ public class CategoryEndpoint
         if (category.Name == null) return Results.BadRequest("Invalid category name");
         if (category.Slug == null) return Results.BadRequest("Invalid category slug");
 
-        db.Categories.Add(category);
+        await db.Categories.AddAsync(category);
 
         await db.SaveChangesAsync();
 

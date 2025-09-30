@@ -9,11 +9,11 @@ public class SubCategoryEndpoint
 {
     public void AddRoute(IEndpointRouteBuilder app)
     {
-        app.MapPost("/subCategory", CreateSubCategory);
-        app.MapGet("/subCategorys", ReadSubCategorys);
-        app.MapGet("/subCategory/{id}", ReadSubCategory);
-        app.MapPut("/subCategory/{id}", UpdateSubCategory);
-        app.MapDelete("/subCategory/{id}", DeleteSubCategory);
+        app.MapPost("/subcategory", CreateSubCategory);
+        app.MapGet("/subcategorys", ReadSubCategorys);
+        app.MapGet("/subcategory/{id}", ReadSubCategory);
+        app.MapPut("/subcategory/{id}", UpdateSubCategory);
+        app.MapDelete("/subcategory/{id}", DeleteSubCategory);
     }
     private async Task<IResult> CreateSubCategory([FromServices] AppDbContext db, [FromBody] SubCategory subCategory)
     {
@@ -30,6 +30,7 @@ public class SubCategoryEndpoint
 
         subCategory.Category = category;
 
+        await db.SubCategories.AddAsync(subCategory);
         await db.SaveChangesAsync();
 
         SubCategoryDto subCategoryDto = new SubCategoryDto

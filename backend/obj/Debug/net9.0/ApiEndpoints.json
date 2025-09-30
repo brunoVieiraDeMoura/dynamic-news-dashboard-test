@@ -109,7 +109,7 @@
     ]
   },
   {
-    "ContainingType": "jornal.Controllers.UserEndpoint",
+    "ContainingType": "jornal.Controllers.LoginEndpoint",
     "Method": "Login",
     "RelativePath": "login",
     "HttpMethod": "POST",
@@ -430,6 +430,28 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "jornal.Controllers.UserEndpoint",
+    "Method": "CreateGoogle",
+    "RelativePath": "user/google",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "jornal.Models.UserGoogle",
         "IsRequired": true
       }
     ],

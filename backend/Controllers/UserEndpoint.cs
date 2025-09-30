@@ -17,13 +17,12 @@ public class UserEndpoint
     public void AddRoute(IEndpointRouteBuilder app)
     {
         app.MapPost("/user", Create);
-        app.MapGet("/users", Reads)
-            .RequireAuthorization(new AuthorizeAttribute { Roles = "admin"});
+        app.MapPost("/user/google", CreateGoogle);
+        app.MapGet("/users", Reads).RequireAuthorization();
         app.MapGet("/user/{id}", Read).RequireAuthorization();
-        app.MapPut("/user/{id}", Update).RequireAuthorization();
+        app.MapPut("/user/{id}", Update).RequireAuthorization(new AuthorizeAttribute { Roles = "admin" });
         app.MapDelete("/user/{id}", Delete).RequireAuthorization();
         app.MapPost("/user/me", Me).RequireAuthorization();
-        app.MapPost("/login", Login);
     }
     private async Task<IResult> Create(
         [FromServices] AppDbContext db,
@@ -37,7 +36,7 @@ public class UserEndpoint
         if (!MiniValidator.TryValidate(dto, out var errors))
             return Results.ValidationProblem(errors);
 
-        if (!await db.Users.AnyAsync(u => u.Email == dto.Email)) return Results.BadRequest("Email already registered");
+        if (await db.Users.AnyAsync(u => u.Email == dto.Email)) return Results.BadRequest("Email already registered");
 
         var user = new User
         {
@@ -51,6 +50,55 @@ public class UserEndpoint
 
         return Results.Ok($"Usuario criado com sucesso!");
 
+    }
+    private async Task<IResult> CreateGoogle(
+        [FromServices] AppDbContext db,
+        [FromBody] UserGoogle dto,
+        IConfiguration config)
+    {
+        if (string.IsNullOrEmpty(dto.IdToken))
+            return Results.BadRequest("Invalid Google Token");
+
+        var payload = await Google.Apis.Auth.GoogleJsonWebSignature.ValidateAsync(dto.IdToken);
+
+        if (payload == null || string.IsNullOrEmpty(payload.Email))
+            return Results.BadRequest("Invalid Google Token");
+
+        var user = await db.Users.FirstOrDefaultAsync(u => u.Email == payload.Email);
+
+        if (user == null)
+        {
+            user = new User
+            {
+                Name = payload.Name ?? payload.Email,
+                Email = payload.Email,
+                Password = null,
+                Role = "user"
+            };
+
+            await db.Users.AddAsync(user);
+            await db.SaveChangesAsync();
+        }
+
+        var claims = new[]
+        {
+            new Claim(ClaimTypes.Name, user.Email),
+            new Claim(ClaimTypes.Role, user.Role ?? "user")
+        };
+
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"]));
+        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+        var jwtToken = new JwtSecurityToken(
+            issuer: config["Jwt:Issuer"],
+            audience: config["Jwt:Audience"],
+            claims: claims,
+            expires: DateTime.UtcNow.AddHours(24),
+            signingCredentials: creds);
+
+        var token = new JwtSecurityTokenHandler().WriteToken(jwtToken);
+
+        return Results.Ok(token);
     }
     private async Task<IResult> Reads([FromServices] AppDbContext db)
     {
@@ -145,35 +193,6 @@ public class UserEndpoint
         await db.SaveChangesAsync();
 
         return Results.Ok($"User {user.Id} deleted");
-    }
-    private async Task<IResult> Login(
-        [FromServices] AppDbContext db,
-        [FromServices] IOptions<JwtSettings> jwtSettings,
-        [FromBody] LoginDto login)
-    {
-
-        var user = await db.Users.FirstOrDefaultAsync(u => u.Email == login.Email);
-        if (user == null) return Results.Unauthorized();
-
-        bool passwordOk = BCrypt.Net.BCrypt.Verify(login.Password, user.Password);
-        if (!passwordOk) return Results.Unauthorized();
-
-        var claims = new[]
-        {
-            new Claim(ClaimTypes.Name, user.Email),
-            new Claim(ClaimTypes.Role, user.Role)
-        };
-
-        var key = new SymmetricSecurityKey(
-            Encoding.UTF8.GetBytes(jwtSettings.Value.Key));
-        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-        var token = new JwtSecurityToken(
-            expires: DateTime.UtcNow.AddHours(24),
-            claims: claims,
-            signingCredentials: creds);
-
-        return Results.Ok(token);
     }
     private async Task<IResult> Me(
         [FromServices] AppDbContext db,
