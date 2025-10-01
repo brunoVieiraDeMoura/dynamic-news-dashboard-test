@@ -242,7 +242,7 @@
   {
     "ContainingType": "jornal.Controllers.SubCategoryEndpoint",
     "Method": "CreateSubCategory",
-    "RelativePath": "subCategory",
+    "RelativePath": "subcategory",
     "HttpMethod": "POST",
     "IsController": false,
     "Order": 0,
@@ -264,7 +264,7 @@
   {
     "ContainingType": "jornal.Controllers.SubCategoryEndpoint",
     "Method": "ReadSubCategory",
-    "RelativePath": "subCategory/{id}",
+    "RelativePath": "subcategory/{id}",
     "HttpMethod": "GET",
     "IsController": false,
     "Order": 0,
@@ -286,7 +286,7 @@
   {
     "ContainingType": "jornal.Controllers.SubCategoryEndpoint",
     "Method": "UpdateSubCategory",
-    "RelativePath": "subCategory/{id}",
+    "RelativePath": "subcategory/{id}",
     "HttpMethod": "PUT",
     "IsController": false,
     "Order": 0,
@@ -313,7 +313,7 @@
   {
     "ContainingType": "jornal.Controllers.SubCategoryEndpoint",
     "Method": "DeleteSubCategory",
-    "RelativePath": "subCategory/{id}",
+    "RelativePath": "subcategory/{id}",
     "HttpMethod": "DELETE",
     "IsController": false,
     "Order": 0,
@@ -335,7 +335,7 @@
   {
     "ContainingType": "jornal.Controllers.SubCategoryEndpoint",
     "Method": "ReadSubCategorys",
-    "RelativePath": "subCategorys",
+    "RelativePath": "subcategorys",
     "HttpMethod": "GET",
     "IsController": false,
     "Order": 0,

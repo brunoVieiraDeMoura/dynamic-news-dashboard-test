@@ -16,13 +16,10 @@ public class PostEndpoint
     }
     private async Task<IResult> CreatePost([FromServices] AppDbContext db, [FromBody] Post post)
     {
-        if (post == null)
-            return Results.BadRequest("Invalid post");
+        if (post == null) return Results.BadRequest("Invalid post");
 
-        if (post.Text == null)
-            return Results.BadRequest("Invalid post text");
-        if (post.Title == null)
-            return Results.BadRequest("Invalid post title");
+        if (post.Text == null) return Results.BadRequest("Invalid post text");
+        if (post.Title == null) return Results.BadRequest("Invalid post title");
 
         var user = await db.Users.FindAsync(post.UserId);
         if (user == null)

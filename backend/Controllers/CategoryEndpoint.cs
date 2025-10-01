@@ -25,11 +25,12 @@ public class CategoryEndpoint
 
         await db.SaveChangesAsync();
 
-        CategoryDto? categoryDto = new CategoryDto
+        var categoryDto = new CategoryDto
         {
             Id = category.Id,
             Name = category.Name,
             Slug = category.Slug,
+            SubCategories = category.SubCategories,
             Date = category.Date
         };
 
@@ -37,9 +38,24 @@ public class CategoryEndpoint
     }
     private async Task<IResult> ReadCategorys([FromServices] AppDbContext db)
     {
-        var categorys = await db.Categories.ToListAsync();
+        var categorys = await db.Categories
+            .Select(c => new CategoryDto
+            {
+                Id = c.Id,
+                Name = c.Name,
+                Slug = c.Slug,
+                Date = c.Date
+            })
+            .ToListAsync();
 
         if (categorys.Count == 0) return Results.BadRequest("There are no categories");
+
+        foreach (var category in categorys)
+        {
+            category.SubCategories = await db.SubCategories
+                .Where(sub => sub.CategoryId == category.Id)
+                .ToListAsync();
+        }
 
         return Results.Ok(categorys);
     }
@@ -82,6 +98,8 @@ public class CategoryEndpoint
         if (categoryUpdate.Slug != null)
             category.Slug = categoryUpdate.Slug;
 
+        await db.SaveChangesAsync();
+
         return Results.Ok(category);
     }
     private async Task<IResult> DeleteCategory([FromServices] AppDbContext db, int id)
@@ -89,6 +107,8 @@ public class CategoryEndpoint
         var category = await db.Categories.FindAsync(id);
 
         if (category == null) return Results.BadRequest("Invalid Category Id");
+
+        db.Remove(category);
 
         await db.SaveChangesAsync();
 

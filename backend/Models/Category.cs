@@ -12,7 +12,7 @@ public class CategoryDto
     public int Id { get; set; }
     public string Slug { get; set; }
     public string Name { get; set; }
-    public ICollection<SubCategory> SubCategories { get; set; }
+    public ICollection<SubCategory>? SubCategories { get; set; }
     public DateTime Date { get; set; }
 
 }

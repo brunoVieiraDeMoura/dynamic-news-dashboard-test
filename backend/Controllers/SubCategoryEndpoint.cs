@@ -22,22 +22,19 @@ public class SubCategoryEndpoint
         if (subCategory.Name == null) return Results.BadRequest("SubCategory name is null");
         if (subCategory.Slug == null) return Results.BadRequest("SubCategory slug is null");
 
-        Category category = await db.Categories
+        var category = await db.Categories
             .Where(c => c.Id == subCategory.CategoryId)
             .FirstAsync();
 
         if (category == null) return Results.BadRequest("CategoryId not found");
 
-        subCategory.Category = category;
-
         await db.SubCategories.AddAsync(subCategory);
         await db.SaveChangesAsync();
 
-        SubCategoryDto subCategoryDto = new SubCategoryDto
+        var subCategoryDto = new SubCategoryDto
         {
             Id = subCategory.Id,
             CategoryId = subCategory.CategoryId,
-            Category = subCategory.Category,
             Name = subCategory.Name,
             Slug = subCategory.Slug,
             Date = subCategory.Date
@@ -112,6 +109,5 @@ public class SubCategoryEndpoint
         await db.SaveChangesAsync();
 
         return Results.Ok($"SubCategory Id:{subCategory.Id} Deleted");
-
     }
 }
