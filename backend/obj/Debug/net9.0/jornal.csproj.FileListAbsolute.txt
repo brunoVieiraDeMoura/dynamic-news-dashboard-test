@@ -754,7 +754,6 @@ D:\projets\Jornal\dynamic-news-dashboard-test\backend\obj\Debug\net9.0\ref\jorna
 D:\projets\Jornal\dynamic-news-dashboard-test\backend\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\projets\Jornal\dynamic-news-dashboard-test\backend\bin\Debug\net9.0\BCrypt.Net-Next.dll
 D:\projets\Jornal\dynamic-news-dashboard-test\backend\bin\Debug\net9.0\MiniValidation.dll
-D:\projets\Jornal\dynamic-news-dashboard-test\backend\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 D:\projets\Jornal\dynamic-news-dashboard-test\backend\bin\Debug\net9.0\Google.Apis.dll
 D:\projets\Jornal\dynamic-news-dashboard-test\backend\bin\Debug\net9.0\Google.Apis.Auth.dll
 D:\projets\Jornal\dynamic-news-dashboard-test\backend\bin\Debug\net9.0\Google.Apis.Core.dll

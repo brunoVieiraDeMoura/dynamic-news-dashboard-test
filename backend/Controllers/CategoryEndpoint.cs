@@ -1,5 +1,4 @@
-﻿
-using jornal.Models;
+﻿using jornal.Models.Category;
 using jornal.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,7 +14,9 @@ public class CategoryEndpoint
         app.MapPut("/category/{id}", UpdateCategory);
         app.MapDelete("/category/{id}", DeleteCategory);
     }
-    private async Task<IResult> CreateCategory([FromServices] AppDbContext db, [FromBody] Category category)
+    private async Task<IResult> CreateCategory(
+        [FromServices] AppDbContext db,
+        [FromBody] Category category)
     {
         if (category == null) return Results.BadRequest("Invalid category");
         if (category.Name == null) return Results.BadRequest("Invalid category name");
@@ -34,7 +35,7 @@ public class CategoryEndpoint
             Date = category.Date
         };
 
-        return Results.Ok(category);
+        return Results.Ok(categoryDto);
     }
     private async Task<IResult> ReadCategorys([FromServices] AppDbContext db)
     {
@@ -78,7 +79,10 @@ public class CategoryEndpoint
 
         return Results.Ok(categoryDto);
     }
-    private async Task<IResult> UpdateCategory([FromServices] AppDbContext db, [FromBody] Category categoryUpdate, int id)
+    private async Task<IResult> UpdateCategory(
+        [FromServices] AppDbContext db,
+        [FromBody] Category categoryUpdate,
+        int id)
     {
         if (categoryUpdate == null) return Results.BadRequest("Category is null");
 
@@ -90,8 +94,7 @@ public class CategoryEndpoint
 
         if (category.Name == null) return Results.BadRequest("Category name is null");
 
-        if (categoryUpdate.Name != null)
-            category.Name = categoryUpdate.Name;
+        if (categoryUpdate.Name != null) category.Name = categoryUpdate.Name;
 
         if (category.Slug == null) return Results.BadRequest("Category slug is null");
 

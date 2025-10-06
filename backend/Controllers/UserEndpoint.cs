@@ -18,11 +18,11 @@ public class UserEndpoint
     {
         app.MapPost("/user", Create);
         app.MapPost("/user/google", CreateGoogle);
-        app.MapGet("/users", Reads).RequireAuthorization();
-        app.MapGet("/user/{id}", Read).RequireAuthorization();
-        app.MapPut("/user/{id}", Update).RequireAuthorization(new AuthorizeAttribute { Roles = "admin" });
-        app.MapDelete("/user/{id}", Delete).RequireAuthorization();
-        app.MapPost("/user/me", Me).RequireAuthorization();
+        app.MapGet("/users", Reads);
+        app.MapGet("/user/{id}", Read);
+        app.MapPut("/user/{id}", Update);
+        app.MapDelete("/user/{id}", Delete);
+        app.MapPost("/user/me", Me);
     }
     private async Task<IResult> Create(
         [FromServices] AppDbContext db,
@@ -46,6 +46,7 @@ public class UserEndpoint
         };
 
         await db.Users.AddAsync(user);
+
         await db.SaveChangesAsync();
 
         return Results.Ok($"Usuario criado com sucesso!");
@@ -72,7 +73,7 @@ public class UserEndpoint
             {
                 Name = payload.Name ?? payload.Email,
                 Email = payload.Email,
-                Password = null,
+                Password = "null",
                 Role = "user"
             };
 

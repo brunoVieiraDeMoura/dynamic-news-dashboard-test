@@ -1,5 +1,4 @@
-﻿
-using jornal.Models;
+﻿using jornal.Models.Category;
 using jornal.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
