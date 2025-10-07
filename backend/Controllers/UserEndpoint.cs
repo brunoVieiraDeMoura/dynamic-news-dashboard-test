@@ -110,6 +110,7 @@ public class UserEndpoint
                 Date = u.Date,
                 Name = u.Name,
                 Email = u.Email,
+                Password = u.Password,
                 Role = u.Role
             })
             .ToListAsync();

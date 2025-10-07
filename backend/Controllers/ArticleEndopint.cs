@@ -26,7 +26,7 @@ public class ArticleEndopint
 
         await db.SaveChangesAsync();
 
-        return Results.Ok("Sucessfull");
+        return Results.Ok(article);
     }
     private async Task<IResult> ArticlesRead([FromServices] AppDbContext db)
     {
