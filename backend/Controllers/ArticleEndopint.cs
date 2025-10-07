@@ -32,7 +32,9 @@ public class ArticleEndopint
     {
         if (!db.Articles.Any()) return Results.BadRequest("User count is 0");
 
-        return Results.Ok(await db.Articles.ToListAsync());
+        var articles = await db.Articles.ToListAsync();
+
+        return Results.Ok(articles);
     }
     private async Task<IResult> ArticleRead([FromServices] AppDbContext db, int id)
     {
