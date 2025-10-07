@@ -32,7 +32,10 @@ public class ArticleEndopint
     {
         if (!db.Articles.Any()) return Results.BadRequest("User count is 0");
 
-        var articles = await db.Articles.ToListAsync();
+        var articles = await db.Articles
+                .Include(a => a.Post)
+                .ThenInclude(p => p.Content)
+                .ToListAsync();
 
         return Results.Ok(articles);
     }
