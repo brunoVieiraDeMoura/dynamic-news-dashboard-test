@@ -7,3 +7,8 @@ public class Document
     public string Type { get; set; } = "doc";
     public List<Node> Content { get; set; } = new();
 }
+public class DocumentDto
+{
+    public string Type { get; set; } = "doc";
+    public List<NodeDto> Content { get; set; } = new();
+}

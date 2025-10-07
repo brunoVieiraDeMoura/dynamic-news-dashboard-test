@@ -11,3 +11,14 @@ public class Article
     public DateTime Data { get; set; }
     public List<Message>? Comments { get; set; }
 }
+public class ArticleDto
+{
+    public int SubCategoryId { get; set; }
+    public int? WriterID { get; set; }
+    public int? ReviewID { get; set; }
+    public string Title { get; set; } = string.Empty;
+    public string Slug { get; set; } = string.Empty;
+    public DocumentDto Post { get; set; } = new();
+    public DateTime Data { get; set; }
+    public List<MessageDto>? Comments { get; set; } = new();
+}

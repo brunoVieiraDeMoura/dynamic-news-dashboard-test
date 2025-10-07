@@ -16,8 +16,6 @@ public class ArticleEndopint
         app.MapDelete("/article/{id}", ArticleDelete);
 
     }
-
-
     private async Task<IResult> ArticleCreate([FromServices] AppDbContext db, [FromBody] Article article)
     {
         if (article == null) return Results.BadRequest("Article is null");
@@ -32,10 +30,7 @@ public class ArticleEndopint
     {
         if (!db.Articles.Any()) return Results.BadRequest("User count is 0");
 
-        var articles = await db.Articles
-                .Include(a => a.Post)
-                .ThenInclude(p => p.Content)
-                .ToListAsync();
+        var articles = await db.Articles.ToListAsync();
 
         return Results.Ok(articles);
     }

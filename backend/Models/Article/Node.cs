@@ -10,3 +10,12 @@ public class Node
     public string? Text { get; set; }
     public List<MarkShip>? Marks { get; set; }
 }
+public class NodeDto
+{
+    public string Type { get; set; }
+    public AttributesDto? Attrs { get; set; }
+    public List<NodeDto>? Content { get; set; }
+    public string? Text { get; set; }
+    public List<MarkShipDto>? Marks { get; set; }
+}
+

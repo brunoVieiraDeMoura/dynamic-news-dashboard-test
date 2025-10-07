@@ -7,3 +7,8 @@ public class MarkShip
     public string Type { get; set; } = string.Empty;
     public Attributes? Attrs { get; set; }
 }
+public class MarkShipDto
+{
+    public string Type { get; set; } = string.Empty;
+    public AttributesDto? Attrs { get; set; }
+}
