@@ -1,24 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|d:\\projets\\jornal\\dynamic-news-dashboard-test\\backend\\controllers\\subcategoryendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|solutionrelative:controllers\\subcategoryendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|d:\\projets\\jornal\\dynamic-news-dashboard-test\\backend\\controllers\\postendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|solutionrelative:controllers\\postendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|d:\\projets\\jornal\\dynamic-news-dashboard-test\\backend\\controllers\\loginendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|solutionrelative:controllers\\loginendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|d:\\projets\\jornal\\dynamic-news-dashboard-test\\backend\\controllers\\categoryendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|solutionrelative:controllers\\categoryendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -26,63 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "SubCategoryEndpoint.cs",
-              "DocumentMoniker": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Controllers\\SubCategoryEndpoint.cs",
-              "RelativeDocumentMoniker": "Controllers\\SubCategoryEndpoint.cs",
-              "ToolTip": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Controllers\\SubCategoryEndpoint.cs",
-              "RelativeToolTip": "Controllers\\SubCategoryEndpoint.cs",
-              "ViewState": "AgIAAFAAAAAAAAAAAAA8wHAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-08T11:48:56.888Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "LoginEndpoint.cs",
-              "DocumentMoniker": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Controllers\\LoginEndpoint.cs",
-              "RelativeDocumentMoniker": "Controllers\\LoginEndpoint.cs",
-              "ToolTip": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Controllers\\LoginEndpoint.cs",
-              "RelativeToolTip": "Controllers\\LoginEndpoint.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAAwDYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-08T11:12:25.123Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CategoryEndpoint.cs",
-              "DocumentMoniker": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Controllers\\CategoryEndpoint.cs",
-              "RelativeDocumentMoniker": "Controllers\\CategoryEndpoint.cs",
-              "ToolTip": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Controllers\\CategoryEndpoint.cs",
-              "RelativeToolTip": "Controllers\\CategoryEndpoint.cs",
-              "ViewState": "AgIAAFcAAAAAAAAAAAAowHgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-08T11:09:27.734Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PostEndpoint.cs",
-              "DocumentMoniker": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Controllers\\PostEndpoint.cs",
-              "RelativeDocumentMoniker": "Controllers\\PostEndpoint.cs",
-              "ToolTip": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Controllers\\PostEndpoint.cs",
-              "RelativeToolTip": "Controllers\\PostEndpoint.cs",
-              "ViewState": "AgIAAF4AAAAAAAAAAAAuwH4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-08T11:05:42.716Z",
-              "EditorCaption": ""
             }
           ]
         }

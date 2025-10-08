@@ -16,9 +16,31 @@ public class ArticleEndopint
         app.MapDelete("/article/{id}", ArticleDelete);
 
     }
-    private async Task<IResult> ArticleCreate([FromServices] AppDbContext db, [FromBody] Article article)
+    private async Task<IResult> ArticleCreate([FromServices] AppDbContext db, [FromBody] ArticleCreate articleCreate)
     {
-        if (article == null) return Results.BadRequest("Article is null");
+        if (articleCreate == null) return Results.BadRequest("Article is null");
+
+        var category = await db.Categories.FindAsync(articleCreate.CategoryId);
+
+        if (category == null) return Results.BadRequest("Category not found");
+
+        var subCategory = await db.SubCategories.FindAsync(articleCreate.SubCategoryId);
+
+        if (subCategory == null) return Results.BadRequest("SubCategory not found");
+
+        var article = new Article
+        {
+            CategoryId = articleCreate.CategoryId,
+            SubCategoryId = articleCreate.SubCategoryId,
+            Category = category.Name,
+            SubCategory = subCategory.Name,
+            Accepted = articleCreate.Accepted,
+            Post = articleCreate.Post,
+            ReviewID = articleCreate.ReviewID,
+            Slug = articleCreate.Slug,
+            Title = articleCreate.Title,
+            WriterID = articleCreate.WriterID
+        };
 
         await db.Articles.AddAsync(article);
 
