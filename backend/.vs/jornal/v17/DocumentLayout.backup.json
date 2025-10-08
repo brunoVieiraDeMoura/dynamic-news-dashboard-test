@@ -3,32 +3,24 @@
   "WorkspaceRootPath": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|d:\\projets\\jornal\\dynamic-news-dashboard-test\\backend\\services\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|solutionrelative:services\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|d:\\projets\\jornal\\dynamic-news-dashboard-test\\backend\\controllers\\articleendopint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|solutionrelative:controllers\\articleendopint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|d:\\projets\\jornal\\dynamic-news-dashboard-test\\backend\\models\\article\\node.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|solutionrelative:models\\article\\node.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|d:\\projets\\jornal\\dynamic-news-dashboard-test\\backend\\controllers\\categoryendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|solutionrelative:controllers\\categoryendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|d:\\projets\\jornal\\dynamic-news-dashboard-test\\backend\\models\\article\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|solutionrelative:models\\article\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|d:\\projets\\jornal\\dynamic-news-dashboard-test\\backend\\models\\article\\markship.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|solutionrelative:models\\article\\markship.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|d:\\projets\\jornal\\dynamic-news-dashboard-test\\backend\\controllers\\messageendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|solutionrelative:controllers\\messageendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|d:\\projets\\jornal\\dynamic-news-dashboard-test\\backend\\models\\article\\attributes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|solutionrelative:models\\article\\attributes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|d:\\projets\\jornal\\dynamic-news-dashboard-test\\backend\\models\\article\\article.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|solutionrelative:models\\article\\article.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|d:\\projets\\jornal\\dynamic-news-dashboard-test\\backend\\controllers\\articleendopint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|solutionrelative:controllers\\articleendopint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|d:\\projets\\jornal\\dynamic-news-dashboard-test\\backend\\controllers\\userendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{768C4B9D-DC76-4C61-848A-45F30869CEE9}|jornal.csproj|solutionrelative:controllers\\userendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -47,14 +39,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Node.cs",
-              "DocumentMoniker": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Models\\Article\\Node.cs",
-              "RelativeDocumentMoniker": "Models\\Article\\Node.cs",
-              "ToolTip": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Models\\Article\\Node.cs",
-              "RelativeToolTip": "Models\\Article\\Node.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAA9wAQAAAAAAAAAAAAAAA==",
+              "Title": "CategoryEndpoint.cs",
+              "DocumentMoniker": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Controllers\\CategoryEndpoint.cs",
+              "RelativeDocumentMoniker": "Controllers\\CategoryEndpoint.cs",
+              "ToolTip": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Controllers\\CategoryEndpoint.cs",
+              "RelativeToolTip": "Controllers\\CategoryEndpoint.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-07T16:33:08.215Z",
+              "WhenOpened": "2025-10-08T10:51:14.244Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ArticleEndopint.cs",
+              "DocumentMoniker": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Controllers\\ArticleEndopint.cs",
+              "RelativeDocumentMoniker": "Controllers\\ArticleEndopint.cs",
+              "ToolTip": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Controllers\\ArticleEndopint.cs",
+              "RelativeToolTip": "Controllers\\ArticleEndopint.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAgwDUAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T10:50:39.795Z",
               "EditorCaption": ""
             },
             {
@@ -65,74 +70,35 @@
               "RelativeDocumentMoniker": "Models\\Article\\Message.cs",
               "ToolTip": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Models\\Article\\Message.cs",
               "RelativeToolTip": "Models\\Article\\Message.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAA3wBMAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-07T16:33:05.5Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MarkShip.cs",
-              "DocumentMoniker": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Models\\Article\\MarkShip.cs",
-              "RelativeDocumentMoniker": "Models\\Article\\MarkShip.cs",
-              "ToolTip": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Models\\Article\\MarkShip.cs",
-              "RelativeToolTip": "Models\\Article\\MarkShip.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-07T16:33:02.033Z",
+              "WhenOpened": "2025-10-08T10:49:49.472Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Attributes.cs",
-              "DocumentMoniker": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Models\\Article\\Attributes.cs",
-              "RelativeDocumentMoniker": "Models\\Article\\Attributes.cs",
-              "ToolTip": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Models\\Article\\Attributes.cs",
-              "RelativeToolTip": "Models\\Article\\Attributes.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Title": "UserEndpoint.cs",
+              "DocumentMoniker": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Controllers\\UserEndpoint.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserEndpoint.cs",
+              "ToolTip": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Controllers\\UserEndpoint.cs",
+              "RelativeToolTip": "Controllers\\UserEndpoint.cs",
+              "ViewState": "AgIAAJkAAAAAAAAAAAAmwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-07T16:32:55.367Z",
+              "WhenOpened": "2025-10-08T10:34:53.999Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Article.cs",
-              "DocumentMoniker": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Models\\Article\\Article.cs",
-              "RelativeDocumentMoniker": "Models\\Article\\Article.cs",
-              "ToolTip": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Models\\Article\\Article.cs",
-              "RelativeToolTip": "Models\\Article\\Article.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "MessageEndpoint.cs",
+              "DocumentMoniker": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Controllers\\MessageEndpoint.cs",
+              "RelativeDocumentMoniker": "Controllers\\MessageEndpoint.cs",
+              "ToolTip": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Controllers\\MessageEndpoint.cs",
+              "RelativeToolTip": "Controllers\\MessageEndpoint.cs",
+              "ViewState": "AgIAAEEAAAAAAAAAAAA3wDoAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-07T16:32:36.719Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AppDbContext.cs",
-              "DocumentMoniker": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Services\\AppDbContext.cs",
-              "RelativeDocumentMoniker": "Services\\AppDbContext.cs",
-              "ToolTip": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Services\\AppDbContext.cs",
-              "RelativeToolTip": "Services\\AppDbContext.cs",
-              "ViewState": "AgIAADEAAAAAAAAAAAAswCcAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-07T16:19:55.767Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ArticleEndopint.cs",
-              "DocumentMoniker": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Controllers\\ArticleEndopint.cs",
-              "RelativeDocumentMoniker": "Controllers\\ArticleEndopint.cs",
-              "ToolTip": "D:\\projets\\Jornal\\dynamic-news-dashboard-test\\backend\\Controllers\\ArticleEndopint.cs",
-              "RelativeToolTip": "Controllers\\ArticleEndopint.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAA5wCIAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-07T16:19:00.565Z",
+              "WhenOpened": "2025-10-08T10:29:00.539Z",
               "EditorCaption": ""
             }
           ]

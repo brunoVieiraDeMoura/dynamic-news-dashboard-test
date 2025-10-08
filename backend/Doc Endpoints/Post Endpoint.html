@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Documentação da API - Posts (PostEndpoint)</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        h1, h2 { color: #2c3e50; }
+        code { background-color: #f4f4f4; padding: 2px 4px; border-radius: 4px; }
+        pre { background-color: #f4f4f4; padding: 10px; border-radius: 4px; overflow-x: auto; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Documentação da API - Posts (PostEndpoint)</h1>
+    <p>Esta seção documenta os endpoints responsáveis pelo gerenciamento de <strong>posts</strong> no sistema <code>Jornal</code>.</p>
+
+    <h2>Endpoints de Post</h2>
+
+    <h3>POST /post</h3>
+    <p>Cria um novo post associado a um usuário existente.</p>
+<pre><code>Requisição:
+{
+    "UserId": 1,
+    "Title": "Meu Primeiro Post",
+    "Text": "Este é o conteúdo do post."
+}
+
+Resposta:
+{
+    "Id": 10,
+    "Date": "2025-10-08T00:00:00Z",
+    "UserId": 1,
+    "Title": "Meu Primeiro Post",
+    "Text": "Este é o conteúdo do post.",
+    "UserName": "João Silva"
+}</code></pre>
+
+    <h3>GET /posts</h3>
+    <p>Retorna todos os posts cadastrados no sistema, incluindo o nome do usuário autor de cada post.</p>
+<pre><code>Resposta:
+[
+    {
+        "Id": 10,
+        "Date": "2025-10-08T00:00:00Z",
+        "UserId": 1,
+        "Title": "Meu Primeiro Post",
+        "Text": "Este é o conteúdo do post.",
+        "UserName": "João Silva"
+    },
+    {
+        "Id": 11,
+        "Date": "2025-10-08T00:00:00Z",
+        "UserId": 2,
+        "Title": "Outro Post",
+        "Text": "Conteúdo de exemplo.",
+        "UserName": "Maria Souza"
+    }
+]</code></pre>
+
+    <h3>GET /post/{id}</h3>
+    <p>Retorna um post específico com base no ID informado.</p>
+<pre><code>Parâmetros:
+id (int)
+
+Resposta:
+{
+    "Id": 10,
+    "Date": "2025-10-08T00:00:00Z",
+    "UserId": 1,
+    "Title": "Meu Primeiro Post",
+    "Text": "Este é o conteúdo do post.",
+    "UserName": "João Silva"
+}</code></pre>
+
+    <h3>PUT /post/{id}</h3>
+    <p>Atualiza os dados de um post existente.</p>
+<pre><code>Requisição:
+{
+    "Title": "Post Atualizado",
+    "Text": "Conteúdo do post foi alterado."
+}
+
+Resposta:
+{
+    "Id": 10,
+    "Date": "2025-10-08T00:00:00Z",
+    "UserId": 1,
+    "Title": "Post Atualizado",
+    "Text": "Conteúdo do post foi alterado.",
+    "UserName": "João Silva"
+}</code></pre>
+
+    <h3>DELETE /post/{id}</h3>
+    <p>Remove um post com base no ID informado.</p>
+<pre><code>Parâmetros:
+id (int)
+
+Resposta:
+"Post 10 deleted"</code></pre>
+
+    <h2>Modelo de Dados - Post</h2>
+    <table>
+        <tr><th>Campo</th><th>Tipo</th><th>Descrição</th></tr>
+        <tr><td>Id</td><td>int</td><td>Identificador único do post.</td></tr>
+        <tr><td>Date</td><td>DateTime</td><td>Data de criação do post.</td></tr>
+        <tr><td>UserId</td><td>int</td><td>ID do usuário autor do post.</td></tr>
+        <tr><td>Title</td><td>string</td><td>Título do post.</td></tr>
+        <tr><td>Text</td><td>string</td><td>Conteúdo textual do post.</td></tr>
+        <tr><td>User</td><td>User</td><td>Referência ao usuário autor (relacionamento).</td></tr>
+    </table>
+
+    <h2>Modelo de Dados - PostDto</h2>
+<pre><code>{
+    "Id": 10,
+    "Date": "2025-10-08T00:00:00Z",
+    "UserId": 1,
+    "Title": "Exemplo de Post",
+    "Text": "Conteúdo de exemplo.",
+    "UserName": "João Silva"
+}</code></pre>
+
+    <h2>Modelo Relacionado - User</h2>
+<pre><code>{
+    "Id": 1,
+    "Name": "João Silva",
+    "Email": "joao@example.com",
+    "Role": "user"
+}</code></pre>
+
+    <h2>Observações</h2>
+    <ul>
+        <li>Todos os posts estão associados a um usuário existente (<code>UserId</code> deve ser válido).</li>
+        <li>As respostas utilizam o modelo <code>PostDto</code> para incluir o campo <strong>UserName</strong>.</li>
+        <li>O endpoint <code>PUT</code> atualiza apenas os campos <code>Title</code> e <code>Text</code>.</li>
+    </ul>
+</body>
+</html>

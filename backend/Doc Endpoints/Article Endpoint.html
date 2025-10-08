@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Documentação da API - Artigos (ArticleEndpoint)</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        h1, h2 { color: #2c3e50; }
+        code { background-color: #f4f4f4; padding: 2px 4px; border-radius: 4px; }
+        pre { background-color: #f4f4f4; padding: 10px; border-radius: 4px; overflow-x: auto; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Documentação da API - Artigos (Article)</h1>
+    <p>Esta seção documenta os endpoints responsáveis pelo gerenciamento de <strong>artigos</strong> no sistema <code>Jornal</code>.</p>
+
+    <h2>Endpoints de Artigos (Article)</h2>
+
+    <h3>POST /article</h3>
+    <p>Cria um novo artigo no banco de dados.</p>
+<pre><code>Requisição:
+{
+    "SubCategoryId": 1,
+    "WriterID": 3,
+    "ReviewID": null,
+    "Title": "Novo Artigo de Tecnologia",
+    "Slug": "novo-artigo-de-tecnologia",
+    "Post": {
+        "Type": "doc",
+        "Content": [
+            { "Type": "paragraph", "Text": "Conteúdo do artigo..." }
+        ]
+    },
+    "Data": "2025-10-06T00:00:00Z",
+    "Comments": []
+}
+
+Resposta:
+"Sucessfull"</code></pre>
+
+    <h3>GET /articles</h3>
+    <p>Retorna todos os artigos cadastrados no sistema.</p>
+<pre><code>Resposta:
+[
+    {
+        "Id": 1,
+        "SubCategoryId": 1,
+        "WriterID": 3,
+        "ReviewID": null,
+        "Title": "Primeiro Artigo",
+        "Slug": "primeiro-artigo",
+        "Post": {
+            "Type": "doc",
+            "Content": []
+        },
+        "Data": "2025-09-29T00:00:00Z",
+        "Comments": []
+    }
+]</code></pre>
+
+    <h3>GET /article/{id}</h3>
+    <p>Retorna um artigo específico com base no ID informado.</p>
+<pre><code>Parâmetros:
+id (int) - ID do artigo
+
+Resposta:
+{
+    "Id": 1,
+    "SubCategoryId": 1,
+    "WriterID": 3,
+    "ReviewID": null,
+    "Title": "Primeiro Artigo",
+    "Slug": "primeiro-artigo",
+    "Post": {
+        "Type": "doc",
+        "Content": [
+            { "Type": "paragraph", "Text": "Conteúdo do artigo" }
+        ]
+    },
+    "Data": "2025-09-29T00:00:00Z",
+    "Comments": []
+}</code></pre>
+
+    <h3>PUT /article/{id}</h3>
+    <p>Atualiza um artigo existente. (Função ainda não implementada no código atual.)</p>
+<pre><code>Requisição:
+{
+    "Title": "Artigo Atualizado",
+    "Slug": "artigo-atualizado",
+    "Post": {
+        "Type": "doc",
+        "Content": [
+            { "Type": "paragraph", "Text": "Novo conteúdo..." }
+        ]
+    }
+}
+
+Resposta:
+"Em desenvolvimento"</code></pre>
+
+    <h3>DELETE /article/{id}</h3>
+    <p>Remove um artigo existente do banco de dados.</p>
+<pre><code>Parâmetros:
+id (int)
+
+Resposta:
+"Sucessfull"</code></pre>
+
+    <h2>Modelo de Dados - Article</h2>
+    <table>
+        <tr>
+            <th>Campo</th>
+            <th>Tipo</th>
+            <th>Descrição</th>
+        </tr>
+        <tr>
+            <td>Id</td>
+            <td>int</td>
+            <td>Identificador único do artigo.</td>
+        </tr>
+        <tr>
+            <td>SubCategoryId</td>
+            <td>int</td>
+            <td>ID da subcategoria à qual o artigo pertence.</td>
+        </tr>
+        <tr>
+            <td>WriterID</td>
+            <td>int?</td>
+            <td>ID do autor (opcional).</td>
+        </tr>
+        <tr>
+            <td>ReviewID</td>
+            <td>int?</td>
+            <td>ID do revisor (opcional).</td>
+        </tr>
+        <tr>
+            <td>Title</td>
+            <td>string</td>
+            <td>Título do artigo.</td>
+        </tr>
+        <tr>
+            <td>Slug</td>
+            <td>string</td>
+            <td>Identificador usado em URLs amigáveis.</td>
+        </tr>
+        <tr>
+            <td>Post</td>
+            <td>Document</td>
+            <td>Estrutura de conteúdo do artigo (texto, imagens, etc.).</td>
+        </tr>
+        <tr>
+            <td>Data</td>
+            <td>DateTime</td>
+            <td>Data de publicação do artigo.</td>
+        </tr>
+        <tr>
+            <td>Comments</td>
+            <td>List&lt;Message&gt;</td>
+            <td>Lista de comentários associados ao artigo.</td>
+        </tr>
+    </table>
+
+    <h2>Modelos Relacionados</h2>
+
+    <h3>Document</h3>
+<pre><code>{
+    "Type": "doc",
+    "Content": [
+        {
+            "Type": "paragraph",
+            "Text": "Exemplo de conteúdo"
+        }
+    ]
+}</code></pre>
+
+    <h3>Node</h3>
+<pre><code>{
+    "Type": "paragraph",
+    "Attrs": {
+        "Class": "texto-principal",
+        "Level": 1
+    },
+    "Content": [],
+    "Text": "Parágrafo de exemplo",
+    "Marks": []
+}</code></pre>
+
+    <h3>MarkShip</h3>
+<pre><code>{
+    "Type": "bold",
+    "Attrs": null
+}</code></pre>
+
+    <h3>Attributes</h3>
+<pre><code>{
+    "Href": "https://example.com",
+    "Target": "_blank",
+    "Class": "link-artigo"
+}</code></pre>
+
+    <h3>Message</h3>
+<pre><code>{
+    "Id": 1,
+    "Text": "Comentário sobre o artigo",
+    "UserId": 2,
+    "CreatedAt": "2025-10-06T10:00:00Z"
+}</code></pre>
+
+</body>
+</html>

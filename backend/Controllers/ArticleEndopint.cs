@@ -32,6 +32,13 @@ public class ArticleEndopint
 
         var articles = await db.Articles.ToListAsync();
 
+        foreach (var article in articles)
+        {
+            article.Comments = await db.Messages
+                .Where(m => m.ArticleId == article.Id)
+                .ToListAsync();
+        }
+
         return Results.Ok(articles);
     }
     private async Task<IResult> ArticleRead([FromServices] AppDbContext db, int id)
@@ -41,6 +48,10 @@ public class ArticleEndopint
             .FirstOrDefaultAsync();
 
         if (article == null) return Results.BadRequest("Article not found");
+
+        article.Comments = await db.Messages
+            .Where(m => m.ArticleId == article.Id)
+            .ToListAsync();
 
         return Results.Ok(article);
     }

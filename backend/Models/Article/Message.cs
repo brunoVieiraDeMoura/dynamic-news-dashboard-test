@@ -6,14 +6,26 @@ namespace jornal.Models.Article;
 public class Message
 {
     public int Id { get; set; }
-    public string Text { get; set; } = string.Empty;
     public int UserId { get; set; }
-    public DateTime CreatedAt { get; set; }
+    public int ArticleId { get; set; }
+    public string Text { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.Now;
 }
 public class MessageDto
 {
     public int Id { get; set; }
-    public string Text { get; set; } = string.Empty;
     public int UserId { get; set; }
+    public int ArticleId { get; set; }
+    public string Text { get; set; }
     public DateTime CreatedAt { get; set; }
+}
+public class MessageCreat
+{
+    public int UserId { get; set; }
+    public int ArticleId { get; set; }
+    public string Text { get; set; }
+}
+public class MessageUpt
+{
+    public string text { get; set; }
 }
