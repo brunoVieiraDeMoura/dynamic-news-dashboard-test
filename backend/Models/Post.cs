@@ -10,8 +10,18 @@ public class Post
     public string Title { get; set; }
     public string Text { get; set; }
     public DateTime Date { get; set; } = DateTime.Now;
-
-
+}
+public class PostCreateDto
+{
+    public int UserId { get; set; }
+    public string Title { get; set; }
+    public string Text { get; set; }
+}
+public class PostUpdateDto
+{
+    public string Title { get; set; }
+    public string Text { get; set; }
+}
 }
 public class PostDto
 {

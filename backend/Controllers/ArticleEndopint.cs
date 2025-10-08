@@ -16,7 +16,7 @@ public class ArticleEndopint
         app.MapDelete("/article/{id}", ArticleDelete);
 
     }
-    private async Task<IResult> ArticleCreate([FromServices] AppDbContext db, [FromBody] ArticleCreate articleCreate)
+    private async Task<IResult> ArticleCreate([FromServices] AppDbContext db, [FromBody] ArticleCreateDto articleCreate)
     {
         if (articleCreate == null) return Results.BadRequest("Article is null");
 

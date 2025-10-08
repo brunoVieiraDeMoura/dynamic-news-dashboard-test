@@ -54,7 +54,7 @@ public class UserEndpoint
     }
     private async Task<IResult> CreateGoogle(
         [FromServices] AppDbContext db,
-        [FromBody] UserGoogle dto,
+        [FromBody] UserGoogleDto dto,
         IConfiguration config)
     {
         if (string.IsNullOrEmpty(dto.IdToken))
@@ -142,7 +142,7 @@ public class UserEndpoint
         return Results.Ok(user);
     }
 
-    private async Task<IResult> Update([FromServices] AppDbContext db, [FromBody] User userUpdate, int id)
+    private async Task<IResult> Update([FromServices] AppDbContext db, [FromBody] UserUpdateDto userUpdate, int id)
     {
         if (userUpdate == null) return Results.BadRequest("User is null");
 

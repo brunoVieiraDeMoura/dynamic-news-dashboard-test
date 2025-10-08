@@ -14,16 +14,25 @@ public class PostEndpoint
         app.MapPut("/post/{id}", UpdatePost);
         app.MapDelete("/post/{id}", DeletePost);
     }
-    private async Task<IResult> CreatePost([FromServices] AppDbContext db, [FromBody] Post post)
+    private async Task<IResult> CreatePost(
+        [FromServices] AppDbContext db,
+        [FromBody] PostCreateDto postCreate)
     {
-        if (post == null) return Results.BadRequest("Invalid post");
+        if (postCreate == null) return Results.BadRequest("Invalid post");
 
-        if (post.Text == null) return Results.BadRequest("Invalid post text");
-        if (post.Title == null) return Results.BadRequest("Invalid post title");
+        if (postCreate.Text == null) return Results.BadRequest("Invalid post text");
+        if (postCreate.Title == null) return Results.BadRequest("Invalid post title");
 
-        var user = await db.Users.FindAsync(post.UserId);
+        var user = await db.Users.FindAsync(postCreate.UserId);
         if (user == null)
             return Results.BadRequest("UserId not found");
+
+        var post = new Post
+        {
+            Text = postCreate.Text,
+            Title = postCreate.Title,
+            User = user
+        };
 
         db.Posts.Add(post);
 
@@ -31,8 +40,6 @@ public class PostEndpoint
 
         var postDto = new PostDto
         {
-            Id = post.Id,
-            Date = post.Date,
             UserId = post.UserId,
             Title = post.Title,
             Text = post.Text,
@@ -81,12 +88,12 @@ public class PostEndpoint
 
         return Results.Ok(post);
     }
-    private async Task<IResult> UpdatePost([FromServices] AppDbContext db, [FromBody] Post postUpdate, int id)
+    private async Task<IResult> UpdatePost([FromServices] AppDbContext db, [FromBody] PostUpdateDto postUpdate, int id)
     {
         if (postUpdate == null) return Results.BadRequest("Post is null");
 
         if (postUpdate.Title == null && postUpdate.Text == null) return Results.BadRequest("Post Title and Text is null");
-        
+
         var post = await db.Posts.FindAsync(id);
         if (post == null)
             return Results.BadRequest("Post not found");

@@ -30,7 +30,7 @@ public class ArticleDto
     public DateTime Data { get; set; }
     public List<MessageDto>? Comments { get; set; } = new();
 }
-public class ArticleCreate
+public class ArticleCreateDto
 {
     public int CategoryId { get; set; }
     public int SubCategoryId { get; set; }

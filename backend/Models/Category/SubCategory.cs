@@ -8,6 +8,17 @@ public class SubCategory
     public string Name { get; set; }
     public DateTime Date { get; set; } = DateTime.Now;
 }
+public class SubCategoryUpdateDto
+{
+    public string Slug { get; set; }
+    public string Name { get; set; }
+}
+public class SubCategoryCreateDto
+{
+    public int CategoryId { get; set; }
+    public string Slug { get; set; }
+    public string Name { get; set; }
+}
 public class SubCategoryDto
 {
     public int Id { get; set; }

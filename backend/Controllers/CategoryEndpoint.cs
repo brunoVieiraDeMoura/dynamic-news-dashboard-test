@@ -16,11 +16,17 @@ public class CategoryEndpoint
     }
     private async Task<IResult> CreateCategory(
         [FromServices] AppDbContext db,
-        [FromBody] Category category)
+        [FromBody] CategoryCreateDto categoryCreate)
     {
-        if (category == null) return Results.BadRequest("Invalid category");
-        if (category.Name == null) return Results.BadRequest("Invalid category name");
-        if (category.Slug == null) return Results.BadRequest("Invalid category slug");
+        if (categoryCreate == null) return Results.BadRequest("Invalid category");
+        if (categoryCreate.Name == null) return Results.BadRequest("Invalid category name");
+        if (categoryCreate.Slug == null) return Results.BadRequest("Invalid category slug");
+
+        Category category = new()
+        {
+            Name = categoryCreate.Name,
+            Slug = categoryCreate.Slug
+        };
 
         await db.Categories.AddAsync(category);
 
@@ -81,7 +87,7 @@ public class CategoryEndpoint
     }
     private async Task<IResult> UpdateCategory(
         [FromServices] AppDbContext db,
-        [FromBody] Category categoryUpdate,
+        [FromBody] CategoryUpdateDto categoryUpdate,
         int id)
     {
         if (categoryUpdate == null) return Results.BadRequest("Category is null");

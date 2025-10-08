@@ -14,20 +14,31 @@ public class SubCategoryEndpoint
         app.MapPut("/subcategory/{id}", UpdateSubCategory);
         app.MapDelete("/subcategory/{id}", DeleteSubCategory);
     }
-    private async Task<IResult> CreateSubCategory([FromServices] AppDbContext db, [FromBody] SubCategory subCategory)
+    private async Task<IResult> CreateSubCategory(
+        [FromServices] AppDbContext db,
+        [FromBody] SubCategoryCreateDto subCategoryCreate)
     {
-        if (subCategory == null) return Results.BadRequest("SubCategory is null");
+        if (subCategoryCreate == null) return Results.BadRequest("SubCategory is null");
 
-        if (subCategory.Name == null) return Results.BadRequest("SubCategory name is null");
-        if (subCategory.Slug == null) return Results.BadRequest("SubCategory slug is null");
+        if (subCategoryCreate.Name == null) return Results.BadRequest("SubCategory name is null");
+        if (subCategoryCreate.Slug == null) return Results.BadRequest("SubCategory slug is null");
 
         var category = await db.Categories
-            .Where(c => c.Id == subCategory.CategoryId)
+            .Where(c => c.Id == subCategoryCreate.CategoryId)
             .FirstAsync();
 
         if (category == null) return Results.BadRequest("CategoryId not found");
 
+        var subCategory = new SubCategory
+        {
+            Name = subCategoryCreate.Name,
+            Slug = subCategoryCreate.Slug,
+            CategoryId = subCategoryCreate.CategoryId,
+            Category = category
+        };
+
         await db.SubCategories.AddAsync(subCategory);
+
         await db.SaveChangesAsync();
 
         var subCategoryDto = new SubCategoryDto
@@ -78,7 +89,7 @@ public class SubCategoryEndpoint
 
         return Results.Ok(subCategory);
     }
-    private async Task<IResult> UpdateSubCategory(AppDbContext db,int id, SubCategory subCategoryUpdate)
+    private async Task<IResult> UpdateSubCategory(AppDbContext db, int id, SubCategoryUpdateDto subCategoryUpdate)
     {
         if (subCategoryUpdate == null) return Results.BadRequest("SubCategory is null");
 
@@ -90,7 +101,7 @@ public class SubCategoryEndpoint
 
         if (subCategoryUpdate.Name != null)
             subCategory.Name = subCategoryUpdate.Name;
-        if(subCategoryUpdate.Slug != null)
+        if (subCategoryUpdate.Slug != null)
             subCategory.Slug = subCategoryUpdate.Slug;
 
         await db.SaveChangesAsync();

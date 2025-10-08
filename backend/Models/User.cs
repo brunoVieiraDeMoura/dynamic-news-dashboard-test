@@ -23,6 +23,14 @@ public class UserDto
     public ICollection<Post> Posts { get; set; }
     public DateTime Date { get; set; }
 }
+public class UserUpdateDto
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Email { get; set; }
+    public string Password { get; set; }
+    public string Role { get; set; }
+}
 public class UserCreateDto
 {
     [Required(ErrorMessage = "Invalid user name")]
