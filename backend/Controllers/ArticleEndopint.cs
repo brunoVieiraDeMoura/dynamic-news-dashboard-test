@@ -14,9 +14,10 @@ public class ArticleEndopint
         app.MapGet("/article/{id}", ArticleRead);
         app.MapPut("/article/{id}", ArticleUpdate);
         app.MapDelete("/article/{id}", ArticleDelete);
-
     }
-    private async Task<IResult> ArticleCreate([FromServices] AppDbContext db, [FromBody] ArticleCreateDto articleCreate)
+    private async Task<IResult> ArticleCreate(
+        [FromServices] AppDbContext db,
+        [FromBody] ArticleCreateDto articleCreate)
     {
         if (articleCreate == null) return Results.BadRequest("Article is null");
 
@@ -63,7 +64,9 @@ public class ArticleEndopint
 
         return Results.Ok(articles);
     }
-    private async Task<IResult> ArticleRead([FromServices] AppDbContext db, int id)
+    private async Task<IResult> ArticleRead(
+        [FromServices] AppDbContext db,
+        int id)
     {
         var article = await db.Articles
             .Where(a => a.Id == id)
@@ -78,12 +81,34 @@ public class ArticleEndopint
         return Results.Ok(article);
     }
 
-    private async Task ArticleUpdate(HttpContext context)
+    private async Task<IResult> ArticleUpdate(
+        AppDbContext db,
+        ArticleUpdateDto articleUpdateDto,
+        int id)
     {
-        throw new NotImplementedException();
+        var article = await db.Articles.FindAsync(id);
+        if (article == null) return Results.BadRequest("Article not found");
+
+        if (articleUpdateDto.Title == null ||
+            articleUpdateDto.Slug == null ||
+            articleUpdateDto.Post == null)
+            return Results.BadRequest("All values is null");
+
+        if (articleUpdateDto.Title != null)
+            article.Title = articleUpdateDto.Title;
+        if (articleUpdateDto.Slug != null)
+            article.Slug = articleUpdateDto.Slug;
+        if (articleUpdateDto.Post != null)
+            article.Post = articleUpdateDto.Post;
+
+        await db.SaveChangesAsync();
+
+        return Results.Ok(articleUpdateDto);
     }
 
-    private async Task<IResult> ArticleDelete(AppDbContext db, int id)
+    private async Task<IResult> ArticleDelete(
+        AppDbContext db,
+        int id)
     {
         var article = await db.Articles.FindAsync(id);
 

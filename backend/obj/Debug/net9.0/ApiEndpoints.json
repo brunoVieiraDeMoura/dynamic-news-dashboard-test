@@ -8,8 +8,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "article",
-        "Type": "jornal.Models.Article.Article",
+        "Name": "articleCreate",
+        "Type": "jornal.Models.Article.ArticleCreateDto",
         "IsRequired": true
       }
     ],
@@ -90,8 +90,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "category",
-        "Type": "jornal.Models.Category.Category",
+        "Name": "categoryCreate",
+        "Type": "jornal.Models.Category.CategoryCreateDto",
         "IsRequired": true
       }
     ],
@@ -135,7 +135,7 @@
     "Parameters": [
       {
         "Name": "categoryUpdate",
-        "Type": "jornal.Models.Category.Category",
+        "Type": "jornal.Models.Category.CategoryUpdateDto",
         "IsRequired": true
       },
       {
@@ -330,8 +330,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "post",
-        "Type": "jornal.Models.Post",
+        "Name": "postCreate",
+        "Type": "jornal.Models.PostCreateDto",
         "IsRequired": true
       }
     ],
@@ -375,7 +375,7 @@
     "Parameters": [
       {
         "Name": "postUpdate",
-        "Type": "jornal.Models.Post",
+        "Type": "jornal.Models.PostUpdateDto",
         "IsRequired": true
       },
       {
@@ -439,8 +439,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "subCategory",
-        "Type": "jornal.Models.Category.SubCategory",
+        "Name": "subCategoryCreate",
+        "Type": "jornal.Models.Category.SubCategoryCreateDto",
         "IsRequired": true
       }
     ],
@@ -489,7 +489,7 @@
       },
       {
         "Name": "subCategoryUpdate",
-        "Type": "jornal.Models.Category.SubCategory",
+        "Type": "jornal.Models.Category.SubCategoryUpdateDto",
         "IsRequired": true
       }
     ],
@@ -593,7 +593,7 @@
     "Parameters": [
       {
         "Name": "userUpdate",
-        "Type": "jornal.Models.User",
+        "Type": "jornal.Models.UserUpdateDto",
         "IsRequired": true
       },
       {
@@ -642,7 +642,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "jornal.Models.UserGoogle",
+        "Type": "jornal.Models.UserGoogleDto",
         "IsRequired": true
       }
     ],

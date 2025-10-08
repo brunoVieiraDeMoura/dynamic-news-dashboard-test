@@ -19,7 +19,6 @@ public class PostEndpoint
         [FromBody] PostCreateDto postCreate)
     {
         if (postCreate == null) return Results.BadRequest("Invalid post");
-
         if (postCreate.Text == null) return Results.BadRequest("Invalid post text");
         if (postCreate.Title == null) return Results.BadRequest("Invalid post title");
 

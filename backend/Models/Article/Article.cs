@@ -11,6 +11,8 @@ public class Article
     public int? ReviewID { get; set; }
     public string Title { get; set; } = string.Empty;
     public string Slug { get; set; } = string.Empty;
+    public string Description { get; set; }
+    public string TitleCard { get; set; }
     public Document Post { get; set; } = new();
     public DateTime Data { get; set; } = DateTime.Now;
     public List<Message>? Comments { get; set; }
@@ -26,6 +28,8 @@ public class ArticleDto
     public int? ReviewID { get; set; }
     public string Title { get; set; } = string.Empty;
     public string Slug { get; set; } = string.Empty;
+    public string Description { get; set; }
+    public string TitleCard { get; set; }
     public DocumentDto Post { get; set; } = new();
     public DateTime Data { get; set; }
     public List<MessageDto>? Comments { get; set; } = new();
@@ -37,6 +41,14 @@ public class ArticleCreateDto
     public bool Accepted { get; set; }
     public int? WriterID { get; set; }
     public int? ReviewID { get; set; }
+    public string Title { get; set; } = string.Empty;
+    public string Slug { get; set; } = string.Empty;
+    public string Description { get; set; }
+    public string TitleCard { get; set; }
+    public Document Post { get; set; } = new();
+}
+public class ArticleUpdateDto
+{
     public string Title { get; set; } = string.Empty;
     public string Slug { get; set; } = string.Empty;
     public Document Post { get; set; } = new();
