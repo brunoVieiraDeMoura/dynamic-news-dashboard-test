@@ -22,7 +22,6 @@ public class PostUpdateDto
     public string Title { get; set; }
     public string Text { get; set; }
 }
-}
 public class PostDto
 {
     public int Id { get; set; }
