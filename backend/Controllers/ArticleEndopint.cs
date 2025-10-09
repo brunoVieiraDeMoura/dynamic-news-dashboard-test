@@ -40,7 +40,9 @@ public class ArticleEndopint
             ReviewID = articleCreate.ReviewID,
             Slug = articleCreate.Slug,
             Title = articleCreate.Title,
-            WriterID = articleCreate.WriterID
+            WriterID = articleCreate.WriterID,
+            Description = articleCreate.Description,
+            TitleCard = articleCreate.TitleCard
         };
 
         await db.Articles.AddAsync(article);
