@@ -1,0 +1,126 @@
+﻿using jornal.Models.Category;
+using jornal.Services;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace jornal.Controllers;
+public class CategoryEndpoint
+{
+    public void AddRoute(IEndpointRouteBuilder app)
+    {
+        app.MapPost("/category", CreateCategory);
+        app.MapGet("/categorys", ReadCategorys);
+        app.MapGet("/category/{id}", ReadCategory);
+        app.MapPut("/category/{id}", UpdateCategory);
+        app.MapDelete("/category/{id}", DeleteCategory);
+    }
+    private async Task<IResult> CreateCategory(
+        [FromServices] AppDbContext db,
+        [FromBody] CategoryCreateDto categoryCreate)
+    {
+        if (categoryCreate == null) return Results.BadRequest("Invalid category");
+        if (categoryCreate.Name == null) return Results.BadRequest("Invalid category name");
+        if (categoryCreate.Slug == null) return Results.BadRequest("Invalid category slug");
+
+        Category category = new()
+        {
+            Name = categoryCreate.Name,
+            Slug = categoryCreate.Slug
+        };
+
+        await db.Categories.AddAsync(category);
+
+        await db.SaveChangesAsync();
+
+        var categoryDto = new CategoryDto
+        {
+            Id = category.Id,
+            Name = category.Name,
+            Slug = category.Slug,
+            SubCategories = category.SubCategories,
+            Date = category.Date
+        };
+
+        return Results.Ok(categoryDto);
+    }
+    private async Task<IResult> ReadCategorys([FromServices] AppDbContext db)
+    {
+        var categorys = await db.Categories
+            .Select(c => new CategoryDto
+            {
+                Id = c.Id,
+                Name = c.Name,
+                Slug = c.Slug,
+                Date = c.Date
+            })
+            .ToListAsync();
+
+        if (categorys.Count == 0) return Results.BadRequest("There are no categories");
+
+        foreach (var category in categorys)
+        {
+            category.SubCategories = await db.SubCategories
+                .Where(sub => sub.CategoryId == category.Id)
+                .ToListAsync();
+        }
+
+        return Results.Ok(categorys);
+    }
+    private async Task<IResult> ReadCategory([FromServices] AppDbContext db, int id)
+    {
+        var category = await db.Categories.FindAsync(id);
+
+        if (category == null) return Results.BadRequest("Category not found");
+
+        var categoryDto = new CategoryDto
+        {
+            Id = category.Id,
+            Name = category.Name,
+            Slug = category.Slug,
+            Date = category.Date,
+            SubCategories = await db.SubCategories
+                .Where(sub => sub.CategoryId == category.Id)
+                .ToListAsync()
+        };
+
+        return Results.Ok(categoryDto);
+    }
+    private async Task<IResult> UpdateCategory(
+        [FromServices] AppDbContext db,
+        [FromBody] CategoryUpdateDto categoryUpdate,
+        int id)
+    {
+        if (categoryUpdate == null) return Results.BadRequest("Category is null");
+
+        if (categoryUpdate.Name == null && categoryUpdate.Slug == null) return Results.BadRequest("Category Name and Slug is null");
+
+        Category? category = await db.Categories.FindAsync(id);
+
+        if (category == null) return Results.BadRequest("Category not found");
+
+        if (category.Name == null) return Results.BadRequest("Category name is null");
+
+        if (categoryUpdate.Name != null) category.Name = categoryUpdate.Name;
+
+        if (category.Slug == null) return Results.BadRequest("Category slug is null");
+
+        if (categoryUpdate.Slug != null)
+            category.Slug = categoryUpdate.Slug;
+
+        await db.SaveChangesAsync();
+
+        return Results.Ok(category);
+    }
+    private async Task<IResult> DeleteCategory([FromServices] AppDbContext db, int id)
+    {
+        var category = await db.Categories.FindAsync(id);
+
+        if (category == null) return Results.BadRequest("Invalid Category Id");
+
+        db.Remove(category);
+
+        await db.SaveChangesAsync();
+
+        return Results.Ok($"Category {id} Deleted");
+    }
+}

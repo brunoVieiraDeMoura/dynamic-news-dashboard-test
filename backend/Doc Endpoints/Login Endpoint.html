@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Documentação da API - Login (LoginEndpoint)</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        h1, h2 { color: #2c3e50; }
+        code { background-color: #f4f4f4; padding: 2px 4px; border-radius: 4px; }
+        pre { background-color: #f4f4f4; padding: 10px; border-radius: 4px; overflow-x: auto; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Documentação da API - Login (LoginEndpoint)</h1>
+    <p>Este endpoint é responsável pela autenticação de usuários no sistema <code>Jornal</code>.  
+    Ele valida as credenciais enviadas, gera um token JWT e retorna ao cliente para autenticação nas próximas requisições.</p>
+
+    <h2>Endpoint de Login</h2>
+
+    <h3>POST /login</h3>
+    <p>Autentica um usuário com base em seu e-mail e senha. Retorna um token JWT válido por 24 horas.</p>
+<pre><code>Requisição:
+{
+    "Email": "joao@example.com",
+    "Password": "123456"
+}
+
+Resposta:
+{
+    "Token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}</code></pre>
+
+    <h2>Processo de Autenticação</h2>
+    <ol>
+        <li>O sistema busca o usuário no banco de dados com base no <code>Email</code> informado.</li>
+        <li>Valida a senha utilizando <code>BCrypt.Verify</code>.</li>
+        <li>Gera um token JWT com as seguintes informações (<code>Claims</code>):</li>
+        <ul>
+            <li><strong>Name:</strong> Email do usuário.</li>
+            <li><strong>Role:</strong> Permissão do usuário (ex: user, admin, writer).</li>
+        </ul>
+        <li>Assina o token usando a chave configurada em <code>JwtSettings.Key</code>.</li>
+        <li>Retorna o token no corpo da resposta.</li>
+    </ol>
+
+    <h2>Configuração JWT (JwtSettings)</h2>
+<pre><code>{
+    "Jwt": {
+        "Key": "sua_chave_supersecreta",
+        "Issuer": "JornalAPI",
+        "Audience": "JornalClients"
+    }
+}</code></pre>
+
+    <h2>Modelo de Dados - LoginDto</h2>
+    <table>
+        <tr><th>Campo</th><th>Tipo</th><th>Descrição</th></tr>
+        <tr><td>Email</td><td>string</td><td>Email cadastrado do usuário.</td></tr>
+        <tr><td>Password</td><td>string</td><td>Senha do usuário.</td></tr>
+    </table>
+
+    <h2>Exemplo de Token JWT Decodificado</h2>
+<pre><code>{
+  "name": "joao@example.com",
+  "role": "user",
+  "exp": 1739057292
+}</code></pre>
+
+    <h2>Erros Possíveis</h2>
+    <table>
+        <tr><th>Código</th><th>Descrição</th></tr>
+        <tr><td>401 Unauthorized</td><td>Usuário não encontrado ou senha inválida.</td></tr>
+        <tr><td>400 Bad Request</td><td>Dados inválidos na requisição.</td></tr>
+    </table>
+
+    <h2>Observações</h2>
+    <ul>
+        <li>O token retornado deve ser incluído no cabeçalho das requisições autenticadas:</li>
+<pre><code>Authorization: Bearer {token}</code></pre>
+        <li>O token expira após 24 horas.</li>
+        <li>Utiliza o algoritmo <strong>HMAC SHA-256</strong> para assinatura.</li>
+    </ul>
+</body>
+</html>

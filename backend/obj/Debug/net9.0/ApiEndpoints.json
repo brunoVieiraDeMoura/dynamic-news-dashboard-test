@@ -1,7 +1,198 @@
 [
   {
-    "ContainingType": "jornal.Controllers.UserEndpointRequest",
-    "Method": "LoginUser",
+    "ContainingType": "jornal.Controllers.ArticleEndopint",
+    "Method": "ArticleCreate",
+    "RelativePath": "article",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "articleCreate",
+        "Type": "jornal.Models.Article.ArticleCreateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "jornal.Controllers.ArticleEndopint",
+    "Method": "ArticleRead",
+    "RelativePath": "article/{id}",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "jornal.Controllers.ArticleEndopint",
+    "Method": "ArticleDelete",
+    "RelativePath": "article/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "jornal.Controllers.ArticleEndopint",
+    "Method": "ArticlesRead",
+    "RelativePath": "articles",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "jornal.Controllers.CategoryEndpoint",
+    "Method": "CreateCategory",
+    "RelativePath": "category",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "categoryCreate",
+        "Type": "jornal.Models.Category.CategoryCreateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "jornal.Controllers.CategoryEndpoint",
+    "Method": "ReadCategory",
+    "RelativePath": "category/{id}",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "jornal.Controllers.CategoryEndpoint",
+    "Method": "UpdateCategory",
+    "RelativePath": "category/{id}",
+    "HttpMethod": "PUT",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "categoryUpdate",
+        "Type": "jornal.Models.Category.CategoryUpdateDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "jornal.Controllers.CategoryEndpoint",
+    "Method": "DeleteCategory",
+    "RelativePath": "category/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "jornal.Controllers.CategoryEndpoint",
+    "Method": "ReadCategorys",
+    "RelativePath": "categorys",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "jornal.Controllers.LoginEndpoint",
+    "Method": "Login",
     "RelativePath": "login",
     "HttpMethod": "POST",
     "IsController": false,
@@ -22,32 +213,16 @@
     ]
   },
   {
-    "ContainingType": "jornal.Controllers.PostEndpointRequest",
-    "Method": "GetPosts",
-    "RelativePath": "posts",
-    "HttpMethod": "GET",
-    "IsController": false,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "jornal.Controllers.PostEndpointRequest",
-    "Method": "CreatePost",
-    "RelativePath": "posts",
+    "ContainingType": "jornal.Controllers.MessageEndpoint",
+    "Method": "MessageCreate",
+    "RelativePath": "message",
     "HttpMethod": "POST",
     "IsController": false,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "post",
-        "Type": "jornal.Models.Post",
+        "Name": "msg",
+        "Type": "jornal.Models.Article.MessageCreat",
         "IsRequired": true
       }
     ],
@@ -60,9 +235,9 @@
     ]
   },
   {
-    "ContainingType": "jornal.Controllers.PostEndpointRequest",
-    "Method": "GetPost",
-    "RelativePath": "posts/{id}",
+    "ContainingType": "jornal.Controllers.MessageEndpoint",
+    "Method": "MessageRead",
+    "RelativePath": "message/{id}",
     "HttpMethod": "GET",
     "IsController": false,
     "Order": 0,
@@ -82,16 +257,125 @@
     ]
   },
   {
-    "ContainingType": "jornal.Controllers.PostEndpointRequest",
-    "Method": "EditPost",
-    "RelativePath": "posts/{id}",
+    "ContainingType": "jornal.Controllers.MessageEndpoint",
+    "Method": "MessageUpdate",
+    "RelativePath": "message/{id}",
+    "HttpMethod": "PUT",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "textUpdate",
+        "Type": "jornal.Models.Article.MessageUpt",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "jornal.Controllers.MessageEndpoint",
+    "Method": "MessageDelete",
+    "RelativePath": "message/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "jornal.Controllers.MessageEndpoint",
+    "Method": "MessagesRead",
+    "RelativePath": "messages",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "jornal.Controllers.PostEndpoint",
+    "Method": "CreatePost",
+    "RelativePath": "post",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "postCreate",
+        "Type": "jornal.Models.PostCreateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "jornal.Controllers.PostEndpoint",
+    "Method": "ReadPost",
+    "RelativePath": "post/{id}",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "jornal.Controllers.PostEndpoint",
+    "Method": "UpdatePost",
+    "RelativePath": "post/{id}",
     "HttpMethod": "PUT",
     "IsController": false,
     "Order": 0,
     "Parameters": [
       {
         "Name": "postUpdate",
-        "Type": "jornal.Models.Post",
+        "Type": "jornal.Models.PostUpdateDto",
         "IsRequired": true
       },
       {
@@ -109,9 +393,9 @@
     ]
   },
   {
-    "ContainingType": "jornal.Controllers.PostEndpointRequest",
+    "ContainingType": "jornal.Controllers.PostEndpoint",
     "Method": "DeletePost",
-    "RelativePath": "posts/{id}",
+    "RelativePath": "post/{id}",
     "HttpMethod": "DELETE",
     "IsController": false,
     "Order": 0,
@@ -131,9 +415,9 @@
     ]
   },
   {
-    "ContainingType": "jornal.Controllers.UserEndpointRequest",
-    "Method": "GetUsers",
-    "RelativePath": "users",
+    "ContainingType": "jornal.Controllers.PostEndpoint",
+    "Method": "ReadPosts",
+    "RelativePath": "posts",
     "HttpMethod": "GET",
     "IsController": false,
     "Order": 0,
@@ -147,16 +431,16 @@
     ]
   },
   {
-    "ContainingType": "jornal.Controllers.UserEndpointRequest",
-    "Method": "CreateUser",
-    "RelativePath": "users",
+    "ContainingType": "jornal.Controllers.SubCategoryEndpoint",
+    "Method": "CreateSubCategory",
+    "RelativePath": "subcategory",
     "HttpMethod": "POST",
     "IsController": false,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "user",
-        "Type": "jornal.Models.User",
+        "Name": "subCategoryCreate",
+        "Type": "jornal.Models.Category.SubCategoryCreateDto",
         "IsRequired": true
       }
     ],
@@ -169,9 +453,9 @@
     ]
   },
   {
-    "ContainingType": "jornal.Controllers.UserEndpointRequest",
-    "Method": "GetUser",
-    "RelativePath": "users/{id}",
+    "ContainingType": "jornal.Controllers.SubCategoryEndpoint",
+    "Method": "ReadSubCategory",
+    "RelativePath": "subcategory/{id}",
     "HttpMethod": "GET",
     "IsController": false,
     "Order": 0,
@@ -191,16 +475,125 @@
     ]
   },
   {
-    "ContainingType": "jornal.Controllers.UserEndpointRequest",
-    "Method": "EditUser",
-    "RelativePath": "users/{id}",
+    "ContainingType": "jornal.Controllers.SubCategoryEndpoint",
+    "Method": "UpdateSubCategory",
+    "RelativePath": "subcategory/{id}",
+    "HttpMethod": "PUT",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "subCategoryUpdate",
+        "Type": "jornal.Models.Category.SubCategoryUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "jornal.Controllers.SubCategoryEndpoint",
+    "Method": "DeleteSubCategory",
+    "RelativePath": "subcategory/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "jornal.Controllers.SubCategoryEndpoint",
+    "Method": "ReadSubCategorys",
+    "RelativePath": "subcategorys",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "jornal.Controllers.UserEndpoint",
+    "Method": "Create",
+    "RelativePath": "user",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "jornal.Models.UserCreateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "jornal.Controllers.UserEndpoint",
+    "Method": "Read",
+    "RelativePath": "user/{id}",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "jornal.Controllers.UserEndpoint",
+    "Method": "Update",
+    "RelativePath": "user/{id}",
     "HttpMethod": "PUT",
     "IsController": false,
     "Order": 0,
     "Parameters": [
       {
         "Name": "userUpdate",
-        "Type": "jornal.Models.User",
+        "Type": "jornal.Models.UserUpdateDto",
         "IsRequired": true
       },
       {
@@ -218,9 +611,9 @@
     ]
   },
   {
-    "ContainingType": "jornal.Controllers.UserEndpointRequest",
-    "Method": "DeleteUser",
-    "RelativePath": "users/{id}",
+    "ContainingType": "jornal.Controllers.UserEndpoint",
+    "Method": "Delete",
+    "RelativePath": "user/{id}",
     "HttpMethod": "DELETE",
     "IsController": false,
     "Order": 0,
@@ -231,6 +624,60 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "jornal.Controllers.UserEndpoint",
+    "Method": "CreateGoogle",
+    "RelativePath": "user/google",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "jornal.Models.UserGoogleDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "jornal.Controllers.UserEndpoint",
+    "Method": "Me",
+    "RelativePath": "user/me",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "jornal.Controllers.UserEndpoint",
+    "Method": "Reads",
+    "RelativePath": "users",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": [
       {
         "Type": "System.Void",

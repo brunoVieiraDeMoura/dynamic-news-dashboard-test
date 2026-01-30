@@ -26,7 +26,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
-
 // Add services to the container.
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite("Data Source=users.db"));
@@ -38,7 +37,6 @@ builder.Services.AddControllers()
         opt.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
     });
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("Jwt"));
-
 
 // Configura o CORS
 builder.Services.AddCors(options =>
@@ -63,7 +61,6 @@ using (var scope = app.Services.CreateScope())
     db.Database.EnsureCreated(); // Cria o arquivo users.db se não existir
 }
 
-
 // Configure the HTTP request pipeline.
 app.UseHttpsRedirection();
 
@@ -78,10 +75,21 @@ app.MapControllers();
 
 
 // Registra endpoints adicionais, definidos manualmente nas classes de Request
-var renderUserEndpoint = new UserEndpointRequest();
-var renderPostEndpoint = new PostEndpointRequest();
-renderUserEndpoint.AddRoute(app); // Adiciona rotas personalizadas de usuário
-renderPostEndpoint.AddRoute(app); // Adiciona rotas personalizadas de post
+var renderUserEndpoint = new UserEndpoint();
+var renderPostEndpoint = new PostEndpoint();
+var renderCategoryEndpoint = new CategoryEndpoint();
+var renderSubCategoryEndpoint = new SubCategoryEndpoint();
+var renderLoginEndpoint = new LoginEndpoint();
+var renderArticleEndpoint = new ArticleEndopint();
+var renderMessageEndpoint = new MessageEndpoint();
+renderUserEndpoint.AddRoute(app); // Adiciona rotas personalizadas de User
+renderPostEndpoint.AddRoute(app); // Adiciona rotas personalizadas de Post
+renderCategoryEndpoint.AddRoute(app); // Adiciona rotas personalizadas de Category
+renderSubCategoryEndpoint.AddRoute(app); // Adiciona rotas personalizadas de SubCategory
+renderLoginEndpoint.AddRoute(app);
+renderArticleEndpoint.AddRoute(app);
+renderMessageEndpoint.AddRoute(app);
+
 
 // Iicia a aplicação e começa a escutar requisições
 app.Run();

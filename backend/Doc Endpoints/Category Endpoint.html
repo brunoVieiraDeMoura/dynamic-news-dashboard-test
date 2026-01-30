@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Documentação da API - Categorias (CategoryEndpoint)</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        h1, h2 { color: #2c3e50; }
+        code { background-color: #f4f4f4; padding: 2px 4px; border-radius: 4px; }
+        pre { background-color: #f4f4f4; padding: 10px; border-radius: 4px; overflow-x: auto; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Documentação da API - Categorias (CategoryEndpoint)</h1>
+    <p>Esta seção documenta os endpoints responsáveis pelo gerenciamento de <strong>categorias</strong> no sistema <code>Jornal</code>.</p>
+
+    <h2>Endpoints de Categoria</h2>
+
+    <h3>POST /category</h3>
+    <p>Cria uma nova categoria no sistema.</p>
+<pre><code>Requisição:
+{
+    "Name": "Tecnologia",
+    "Slug": "tecnologia"
+}
+
+Resposta:
+{
+    "Id": 1,
+    "Name": "Tecnologia",
+    "Slug": "tecnologia",
+    "SubCategories": [],
+    "Date": "2025-10-08T00:00:00Z"
+}</code></pre>
+
+    <h3>GET /categorys</h3>
+    <p>Retorna todas as categorias cadastradas, incluindo suas subcategorias.</p>
+<pre><code>Resposta:
+[
+    {
+        "Id": 1,
+        "Name": "Tecnologia",
+        "Slug": "tecnologia",
+        "Date": "2025-10-08T00:00:00Z",
+        "SubCategories": [
+            {
+                "Id": 1,
+                "CategoryId": 1,
+                "Name": "IA e Robótica",
+                "Slug": "ia-robotica",
+                "Date": "2025-10-08T00:00:00Z"
+            }
+        ]
+    }
+]</code></pre>
+
+    <h3>GET /category/{id}</h3>
+    <p>Retorna uma categoria específica com base no ID informado, incluindo suas subcategorias.</p>
+<pre><code>Parâmetros:
+id (int)
+
+Resposta:
+{
+    "Id": 1,
+    "Name": "Tecnologia",
+    "Slug": "tecnologia",
+    "Date": "2025-10-08T00:00:00Z",
+    "SubCategories": [
+        {
+            "Id": 1,
+            "CategoryId": 1,
+            "Name": "IA e Robótica",
+            "Slug": "ia-robotica"
+        }
+    ]
+}</code></pre>
+
+    <h3>PUT /category/{id}</h3>
+    <p>Atualiza os dados de uma categoria existente.</p>
+<pre><code>Requisição:
+{
+    "Name": "Tecnologia Atualizada",
+    "Slug": "tecnologia-atualizada"
+}
+
+Resposta:
+{
+    "Id": 1,
+    "Name": "Tecnologia Atualizada",
+    "Slug": "tecnologia-atualizada",
+    "Date": "2025-10-08T00:00:00Z"
+}</code></pre>
+
+    <h3>DELETE /category/{id}</h3>
+    <p>Remove uma categoria existente com base no ID informado.</p>
+<pre><code>Parâmetros:
+id (int)
+
+Resposta:
+"Category 1 Deleted"</code></pre>
+
+    <h2>Modelo de Dados - Category</h2>
+    <table>
+        <tr><th>Campo</th><th>Tipo</th><th>Descrição</th></tr>
+        <tr><td>Id</td><td>int</td><td>Identificador único da categoria.</td></tr>
+        <tr><td>Name</td><td>string</td><td>Nome da categoria.</td></tr>
+        <tr><td>Slug</td><td>string</td><td>Identificador amigável usado na URL.</td></tr>
+        <tr><td>Date</td><td>DateTime</td><td>Data de criação da categoria.</td></tr>
+        <tr><td>SubCategories</td><td>List&lt;SubCategory&gt;</td><td>Lista de subcategorias associadas à categoria.</td></tr>
+    </table>
+
+    <h2>Modelo de Dados - CategoryDto</h2>
+<pre><code>{
+    "Id": 1,
+    "Name": "Tecnologia",
+    "Slug": "tecnologia",
+    "Date": "2025-10-08T00:00:00Z",
+    "SubCategories": []
+}</code></pre>
+
+    <h2>Modelo Relacionado - SubCategory</h2>
+<pre><code>{
+    "Id": 1,
+    "CategoryId": 1,
+    "Name": "IA e Robótica",
+    "Slug": "ia-robotica",
+    "Date": "2025-10-08T00:00:00Z"
+}</code></pre>
+
+    <h2>Observações</h2>
+    <ul>
+        <li>O campo <code>Slug</code> é usado para URLs amigáveis.</li>
+        <li>Cada categoria pode possuir múltiplas subcategorias associadas.</li>
+        <li>O endpoint <code>PUT</code> permite atualizar apenas <code>Name</code> e <code>Slug</code>.</li>
+        <li>O endpoint <code>GET /categorys</code> retorna todas as categorias com suas subcategorias aninhadas.</li>
+    </ul>
+</body>
+</html>

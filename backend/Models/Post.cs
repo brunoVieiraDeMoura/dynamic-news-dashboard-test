@@ -5,13 +5,22 @@ namespace jornal.Models;
 public class Post
 {
     public int Id { get; set; }
-    [JsonIgnore]
     public User User { get; set; }
     public int UserId { get; set; }
     public string Title { get; set; }
     public string Text { get; set; }
-
-
+    public DateTime Date { get; set; } = DateTime.Now;
+}
+public class PostCreateDto
+{
+    public int UserId { get; set; }
+    public string Title { get; set; }
+    public string Text { get; set; }
+}
+public class PostUpdateDto
+{
+    public string Title { get; set; }
+    public string Text { get; set; }
 }
 public class PostDto
 {
@@ -20,4 +29,5 @@ public class PostDto
     public string Title { get; set; }
     public string Text { get; set; }
     public string UserName { get; set; }
+    public DateTime Date { get; set; }
 }

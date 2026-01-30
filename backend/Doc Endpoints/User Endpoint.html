@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Documentação da API - Usuários (UserEndpoint)</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        h1, h2 { color: #2c3e50; }
+        code { background-color: #f4f4f4; padding: 2px 4px; border-radius: 4px; }
+        pre { background-color: #f4f4f4; padding: 10px; border-radius: 4px; overflow-x: auto; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Documentação da API - Usuários (UserEndpoint)</h1>
+    <p>Esta seção documenta os endpoints responsáveis pelo gerenciamento de <strong>usuários</strong> no sistema <code>Jornal</code>.</p>
+
+    <h2>Endpoints de Usuário</h2>
+
+    <h3>POST /user</h3>
+    <p>Cria um novo usuário com base nas informações fornecidas no corpo da requisição.</p>
+<pre><code>Requisição:
+{
+    "Name": "João Silva",
+    "Email": "joao@example.com",
+    "Password": "123456"
+}
+
+Resposta:
+"Usuario criado com sucesso!"</code></pre>
+
+    <h3>POST /user/google</h3>
+    <p>Autentica ou registra um usuário através do login com Google.</p>
+<pre><code>Requisição:
+{
+    "IdToken": "GOOGLE_ID_TOKEN"
+}
+
+Resposta:
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." (JWT Token)</code></pre>
+
+    <h3>GET /users</h3>
+    <p>Retorna uma lista de todos os usuários cadastrados no sistema.</p>
+<pre><code>Resposta:
+[
+    {
+        "Id": 1,
+        "Date": "2025-10-08T00:00:00Z",
+        "Name": "João Silva",
+        "Email": "joao@example.com",
+        "Password": "hash_bcrypt",
+        "Role": "user"
+    }
+]</code></pre>
+
+    <h3>GET /user/{id}</h3>
+    <p>Retorna as informações de um usuário específico, incluindo seus posts.</p>
+<pre><code>Parâmetros:
+id (int)
+
+Resposta:
+{
+    "Id": 1,
+    "Date": "2025-10-08T00:00:00Z",
+    "Name": "João Silva",
+    "Email": "joao@example.com",
+    "Role": "user",
+    "Posts": [
+        { "Id": 10, "Title": "Meu primeiro post", "Slug": "meu-primeiro-post" }
+    ]
+}</code></pre>
+
+    <h3>PUT /user/{id}</h3>
+    <p>Atualiza as informações de um usuário existente.</p>
+<pre><code>Requisição:
+{
+    "Name": "João Atualizado",
+    "Email": "joao.novo@example.com",
+    "Password": "novaSenha",
+    "Role": "admin"
+}
+
+Resposta:
+{
+    "Id": 1,
+    "Name": "João Atualizado",
+    "Email": "joao.novo@example.com",
+    "Role": "admin"
+}</code></pre>
+
+    <h3>DELETE /user/{id}</h3>
+    <p>Remove um usuário com base no ID informado.</p>
+<pre><code>Parâmetros:
+id (int)
+
+Resposta:
+"User 1 deleted"</code></pre>
+
+    <h3>POST /user/me</h3>
+    <p>Retorna as informações do usuário autenticado com base no token JWT presente no cabeçalho.</p>
+<pre><code>Headers:
+Authorization: Bearer {token}
+
+Resposta:
+{
+    "Id": 1,
+    "Date": "2025-10-08T00:00:00Z",
+    "Name": "João Silva",
+    "Email": "joao@example.com",
+    "Role": "user"
+}</code></pre>
+
+    <h2>Modelo de Dados - User</h2>
+    <table>
+        <tr><th>Campo</th><th>Tipo</th><th>Descrição</th></tr>
+        <tr><td>Id</td><td>int</td><td>Identificador único do usuário.</td></tr>
+        <tr><td>Name</td><td>string</td><td>Nome completo do usuário.</td></tr>
+        <tr><td>Email</td><td>string</td><td>Email utilizado para login.</td></tr>
+        <tr><td>Password</td><td>string</td><td>Senha criptografada (BCrypt).</td></tr>
+        <tr><td>Role</td><td>string</td><td>Função do usuário no sistema (user, admin, writer, review).</td></tr>
+        <tr><td>Date</td><td>DateTime</td><td>Data de criação do usuário.</td></tr>
+        <tr><td>Posts</td><td>List&lt;Post&gt;</td><td>Lista de posts criados pelo usuário.</td></tr>
+    </table>
+
+    <h2>Modelos Relacionados</h2>
+
+    <h3>UserCreateDto</h3>
+<pre><code>{
+    "Name": "João Silva",
+    "Email": "joao@example.com",
+    "Password": "123456"
+}</code></pre>
+
+    <h3>UserGoogle</h3>
+<pre><code>{
+    "IdToken": "GOOGLE_ID_TOKEN"
+}</code></pre>
+
+    <h3>UserDto</h3>
+<pre><code>{
+    "Id": 1,
+    "Date": "2025-10-08T00:00:00Z",
+    "Name": "João Silva",
+    "Email": "joao@example.com",
+    "Role": "user",
+    "Posts": []
+}</code></pre>
+
+</body>
+</html>
